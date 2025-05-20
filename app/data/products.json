@@ -1,0 +1,29 @@
+[
+  {
+    "id": "smart-investing-playbook",
+    "title": "Smart Investing Playbook",
+    "description": "Your 40-page guide to growing long-term wealth with smart, proven strategies.",
+    "price": "$12",
+    "gumroadUrl": "https://yourstore.gumroad.com/l/smart-investing",
+    "imageUrl": "/products/smart-investing.jpg",
+    "locked": false
+  },
+  {
+    "id": "fintech-tools-guide",
+    "title": "Fintech Tools Guide",
+    "description": "Our premium list of tools for budgeting, investing & wealth tracking.",
+    "price": "FREE for subscribers",
+    "gumroadUrl": "",
+    "imageUrl": "/products/fintech-guide.jpg",
+    "locked": true
+  },
+  {
+    "id": "freelance-finance-template",
+    "title": "Freelancer Finance Template",
+    "description": "A Notion + Excel system to manage income, taxes and monthly savings.",
+    "price": "$9",
+    "gumroadUrl": "https://yourstore.gumroad.com/l/freelance-template",
+    "imageUrl": "/products/freelance-template.jpg",
+    "locked": false
+  }
+]
