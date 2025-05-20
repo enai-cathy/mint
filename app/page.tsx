@@ -251,7 +251,7 @@ export default function Home() {
             </h1>{" "}
             <br />
             <p className="text-l text-[#0e563d]">
-             Take that bold step towards financial freedom today!
+              Take that bold step towards financial freedom today!
               <br /> <span className="font-bold">Let our planner </span>chart
               your course to financial success.
             </p>{" "}
