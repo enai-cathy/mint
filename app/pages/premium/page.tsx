@@ -41,14 +41,14 @@ export default function PremiumPage({ products }: { products: any[] }) {
     </main>
   );
 }
-export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), "data/products.json");
-  const fileData = fs.readFileSync(filePath, "utf8");
-  const products = JSON.parse(fileData);
+// export async function getStaticProps() {
+//   const filePath = path.join(process.cwd(), "data/products.json");
+//   const fileData = fs.readFileSync(filePath, "utf8");
+//   const products = JSON.parse(fileData);
 
-  return {
-    props: {
-      products,
-    },
-  };
-}
+//   return {
+//     props: {
+//       products,
+//     },
+//   };
+// }
