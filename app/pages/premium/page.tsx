@@ -33,11 +33,11 @@ export default function PremiumPage({ products }: { products: any[] }) {
         Curated digital tools and guides to help you master your money and make
         smarter financial moves.
       </p>
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* <div className="grid gap-6 md:grid-cols-2">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </div>
+      </div> */}
     </main>
   );
 }
