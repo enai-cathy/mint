@@ -1,33 +1,72 @@
-// app/products/page.tsx
 import ProductCard from "@/app/components/ProductCard";
-
 const products = [
   {
-    title: "Ultimate Budgeting Blueprint",
+    id: "monthly-budget-tracker",
+    title: "Monthly Budget Tracker",
     description:
-      "A premium guide to help you master monthly cash flow and spending habits.",
-    price: "$29",
-    image: "/products/budget-blueprint.jpg",
-    link: "https://gumroad.com/l/budgetblueprint",
+      "Track your monthly income and expenses effortlessly with a simple, clear layout designed for everyone worldwide.",
+    price: "USD $15",
+    originalPrice: "USD $20",
+    link: "https://lemonsqueezy.com/products/monthly-budget-tracker?ref=your_affiliate_id",
+    image: "/products/monthly-budget-tracker.png",
   },
   {
-    title: "Luxury Credit Card Secrets",
-    description: "Ebook uncovering top-tier credit perks for high spenders.",
-    price: "$49",
-    image: "/products/credit-secrets.jpg",
-    link: "https://gumroad.com/l/creditsecrets",
+    id: "debt-crusher-toolkit",
+    title: "Debt Crusher Toolkit",
+    description:
+      "Organize and eliminate your debt faster with this globally trusted set of tools and strategies.",
+    price: "USD $25",
+    link: "https://lemonsqueezy.com/products/debt-crusher-toolkit?ref=your_affiliate_id",
+    image: "/products/debt-crusher-toolkit.png",
+  },
+  {
+    id: "savings-goal-planner",
+    title: "Savings Goal Planner",
+    description:
+      "Set and track realistic savings goals, stay motivated, and watch your wealth grow — no matter where you live.",
+    price: "USD $9",
+    originalPrice: "USD $20",
+    link: "https://gumroad.com/l/savings-goal-planner?ref=your_affiliate_id",
+    image: "/products/savings-goal-planner.png",
+  },
+  {
+    id: "net-worth-builder",
+    title: "Net Worth & Wealth Builder",
+    description:
+      "Monitor assets and liabilities in one place, helping you confidently build wealth across borders.",
+    price: "USD $30",
+    link: "https://gumroad.com/l/net-worth-builder?ref=your_affiliate_id",
+    image: "/products/net-worth-builder.png",
+  },
+  {
+    id: "small-biz-bookkeeping-kit",
+    title: "Small Business Bookkeeping Kit",
+    description:
+      "Ideal for entrepreneurs everywhere — track expenses, revenue, and taxes with ease.",
+    price: "USD $40",
+    link: "https://lemonsqueezy.com/products/small-biz-bookkeeping-kit?ref=your_affiliate_id",
+    image: "/products/small-biz-bookkeeping-kit.png",
+  },
+  {
+    id: "subscription-tracker",
+    title: "Subscription Tracker",
+    description:
+      "Manage recurring payments and subscriptions effortlessly to save money monthly, wherever you are.",
+    price: "USD $10",
+    link: "https://gumroad.com/l/subscription-tracker?ref=your_affiliate_id",
+    image: "/products/subscription-tracker.png",
   },
 ];
 
 export default function ProductsPage() {
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      <h1 className="text-4xl font-bold text-white mb-6">Digital Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {products.map((p) => (
-          <ProductCard key={p.title} {...p} />
+    <main>
+      {/* header & description */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} />
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

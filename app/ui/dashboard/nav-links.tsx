@@ -7,21 +7,20 @@ import {
   WrenchScrewdriverIcon,
   SparklesIcon,
 } from "@heroicons/react/24/outline";
-import Link from 'next/link'
+import Link from "next/link";
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: "Home", href: "/pages", icon: HomeIcon },
+  { name: "About", href: "/pages/about", icon: InformationCircleIcon },
+  { name: "Products", href: "/pages/products", icon: ShoppingBagIcon },
+  { name: "Premium", href: "/pages/premium", icon: SparklesIcon },
   {
     name: "Blog",
     href: "/pages/blog",
     icon: DocumentDuplicateIcon,
   },
-  { name: "About", href: "/pages/about", icon: InformationCircleIcon },
-  { name: "Contact", href: "/pages/contact", icon: EnvelopeIcon },
-  { name: "Premium", href: "/pages/premium", icon: SparklesIcon },
-  { name: "Products", href: "/pages/products", icon: ShoppingBagIcon },
   { name: "Tools", href: "/pages/tools", icon: WrenchScrewdriverIcon },
 ];
 
