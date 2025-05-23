@@ -4,6 +4,7 @@ export default function TermsOfService() {
   return (
     <section className="max-w-4xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-200">
       <h1 className="text-3xl font-bold mb-6">Terms of Service</h1>
+      <title>Terms of Service | Mint Mogul</title>
       <p className="mb-6">
         Effective Date: <strong>[Insert Date]</strong>
       </p>

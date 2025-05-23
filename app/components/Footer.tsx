@@ -1,5 +1,11 @@
-import { Mail, Facebook, Twitter, Instagram } from "lucide-react";
+import { EnvelopeIcon } from "@heroicons/react/24/outline"; // or /solid
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+
 import PrivacyPolicy from "./PrivacyPolicy";
+import TermsOfService from "./TermsOfService";
+import AffiliateDisclosure from "./AffiliateDisclosure";
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-[#f9fafb] dark:bg-gray-950 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800 mt-12">
@@ -22,22 +28,22 @@ export default function Footer() {
           </h3>
           <ul className="space-y-1">
             <li>
-              <Link href="/tools" className="hover:text-[#536c32]">
+              <Link href="/tools" className="hover:text-[#b3da67]">
                 Top Tools
               </Link>
             </li>
             <li>
-              <Link href="/products" className="hover:text-[#536c32]">
+              <Link href="/products" className="hover:text-[#b3da67]">
                 Smart Products
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="hover:text-[#536c32]">
+              <Link href="/blog" className="hover:text-[#b3da67]">
                 Blog Insights
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-[#536c32]">
+              <Link href="/about" className="hover:text-[#b3da67]">
                 About Us
               </Link>
             </li>
@@ -50,24 +56,35 @@ export default function Footer() {
             Trust & Legal
           </h3>
           <ul className="space-y-1">
-            <li className="hover:text-[#536c32]">
-                <PrivacyPolicy/>
+            <li>
+              <Link
+                href="/Privacy"
+                className="hover:text-[#536c32] text-blue-600 underline"
+              >
+                Privacy Policy
+              </Link>
             </li>
             <li>
-              <Link href="/terms-of-service" className="hover:text-[#536c32]">
+              <Link
+                href="/TermsPage"
+                className="hover:text-[#536c32] text-blue-600 underline"
+              >
                 Terms of Service
               </Link>
             </li>
             <li>
               <Link
-                href="/affiliate-disclosure"
-                className="hover:text-[#536c32]"
+                href="/AffliateDisclosure"
+                className="hover:text-[#536c32] text-blue-600 underline"
               >
-                Affiliate Disclosure
+                Affliate Disclosure
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-[#536c32]">
+              <Link
+                href="/contact"
+                className="hover:text-[#536c32] text-blue-600 underline"
+              >
                 Contact Us
               </Link>
             </li>
@@ -101,17 +118,17 @@ export default function Footer() {
               target="_blank"
               aria-label="Facebook"
             >
-              <Facebook className="w-5 h-5 hover:text-[#536c32]" />
+              <FaFacebook className="w-5 h-5 hover:text-[#536c32]" />
             </a>
             <a href="https://twitter.com" target="_blank" aria-label="Twitter">
-              <Twitter className="w-5 h-5 hover:text-[#536c32]" />
+              <FaTwitter className="w-5 h-5 hover:text-[#536c32]" />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5 hover:text-[#536c32]" />
+              <FaInstagram className="w-5 h-5 hover:text-[#536c32]" />
             </a>
           </div>
         </div>

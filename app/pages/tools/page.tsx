@@ -1,3 +1,4 @@
+import Footer from "@/app/components/Footer";
 import ToolCard from "@/app/components/ToolCard";
 import {
   CheckIcon,
@@ -159,6 +160,7 @@ export default function ToolsPage() {
           </button>
         </Link>
       </div>
+      <Footer/>
     </div>
   );
 }

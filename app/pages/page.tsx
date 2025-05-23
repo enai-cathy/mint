@@ -1,15 +1,18 @@
 import Hero from "../components/Hero";
-import Layout from "../components/Layout";
-import Newsletter from "../components/Newsletter";
+
+
 import CurrencyWidget from "@/app/components/CurrencyWidget";
 import NewsletterSignup from "@/app/components/Newsletter";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
 import Image from "next/image";
 import SavingsCalculator from "@/app/components/SavingsCalculator";
-import Link from "@/app/ui/dashboard/nav-links";
+
 import ProductCard from "@/app/components/ProductCard";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Navbar from "../ui/nav-bar";
+import Footer from "../components/Footer";
+
+import Link from "next/link"
 
 
 export default function HomePage() {
@@ -52,9 +55,10 @@ export default function HomePage() {
               Equip yourself with expert-backed tools and strategies to grow
               wealth and reach your money goals—smarter.
               <br />{" "}
-              <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
-                Get Yours Now!
-              </button>
+              <Link href="/products" className="bg-[#b3da67] mt-10 m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
+                  Get Yours Now!
+            
+              </Link>
             </span>
           </div>
           <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
@@ -76,47 +80,41 @@ export default function HomePage() {
         </div>
       </section>
       <section className=" bg-[#0e563d]">
-     
-          <div className="flex shrink-0 items-center p-4 md:h-42">
-            <span>
-              <h1 className="text-6xl text-white font-bold">
-                The Blueprint for Financial Success
-              </h1>{" "}
-              <br />{" "}
-              <p className="text-l text-white">
-                At Mint Mogul, we believe building wealth starts with having the
-                right tools and insights at your fingertips.
-                <br /> <span className="font-bold">Let our planner </span>chart
-                your course to financial success.
-              </p>{" "}
-              <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
-                Explore Our Free Tools Now!
-              </button>
-            </span>
+        <div className="flex shrink-0 items-center p-4 md:h-42">
+          <span>
+            <h1 className="text-6xl text-white font-bold">
+              The Blueprint for Financial Success
+            </h1>{" "}
+            <br />{" "}
+            <p className="text-l text-white">
+              At Mint Mogul, we believe building wealth starts with having the
+              right tools and insights at your fingertips.
+              <br /> <span className="font-bold">Let our planner </span>chart
+              your course to financial success.
+            </p>{" "}
+            <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
+              Explore Our Free Tools Now!
+            </button>
+          </span>
 
-            <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-              <Image
-                src="/mint-mogul.png"
-                width={1000}
-                height={760}
-                className="hidden md:block"
-                alt="Screenshots of the dashboard project showing desktop version"
-              />
-              <Image
-                src="/mint-mogul.png"
-                width={560}
-                height={620}
-                className="block md:hidden"
-                alt="Screenshots of the dashboard project showing mobile version"
-              />
-            </div>
+          <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
+            <Image
+              src="/mint-mogul.png"
+              width={1000}
+              height={760}
+              className="hidden md:block"
+              alt="Screenshots of the dashboard project showing desktop version"
+            />
+            <Image
+              src="/mint-mogul.png"
+              width={560}
+              height={620}
+              className="block md:hidden"
+              alt="Screenshots of the dashboard project showing mobile version"
+            />
           </div>
-        
+        </div>
       </section>
-
-
-
-
 
       <section className=" bg-[#f7f3eb] py-16 px-4">
         <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
@@ -262,7 +260,7 @@ export default function HomePage() {
         {/* <InvestmentNews /> */}
         {/* <StockTicker /> */}
       </section>
-
+      <Footer />
     </div>
   );
 

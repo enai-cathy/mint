@@ -1,40 +1,35 @@
+"use client";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+
 type Product = {
-  id: string;
   title: string;
   description: string;
   price: string;
-  gumroadUrl: string;
-  imageUrl: string;
-  locked: boolean;
+  coverImage: string;
+  link: string;
 };
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function PremiumCard({ product }: { product: Product }) {
   return (
-    <div className="bg-white shadow-md rounded-xl overflow-hidden">
+    <div className="bg-white rounded-xl shadow hover:shadow-md transition p-4 border border-gray-100">
       <img
-        src={product.imageUrl}
+        src={product.coverImage}
         alt={product.title}
-        className="w-full h-48 object-cover"
+        className="w-full h-56 object-cover rounded-md mb-4"
       />
-      <div className="p-4 space-y-2">
-        <h2 className="text-lg font-semibold">{product.title}</h2>
-        <p className="text-gray-600 text-sm">{product.description}</p>
-        <p className="font-bold">{product.price}</p>
-
-        {product.locked ? (
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg w-full mt-2">
-            🔒 Unlock with Email
-          </button>
-        ) : (
-          <a
-            href={product.gumroadUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block bg-green-600 text-white text-center px-4 py-2 rounded-lg mt-2"
-          >
-            Download Now
-          </a>
-        )}
+      <h3 className="text-xl font-semibold mb-1">{product.title}</h3>
+      <p className="text-gray-600 mb-3">{product.description}</p>
+      <div className="flex items-center justify-between">
+        <span className="text-green-600 font-bold">{product.price}</span>
+        <a
+          href={product.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm text-white bg-green-600 px-4 py-2 rounded-md hover:bg-green-700"
+        >
+          <BookOpenIcon className="w-5 h-5" />
+          Buy Now
+        </a>
       </div>
     </div>
   );

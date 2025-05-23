@@ -22,6 +22,7 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: "Tools", href: "/pages/tools", icon: WrenchScrewdriverIcon },
+  { name: "Contact Us", href: "/pages/contact", icon: EnvelopeIcon },
 ];
 
 export default function NavLinks() {

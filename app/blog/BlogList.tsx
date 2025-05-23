@@ -3,6 +3,7 @@ import { useState } from "react";
 import BlogCard from "@/app/components/BlogCard";
 import { PostMeta } from "@/app/lib/mdx";
 import Navbar from "@/app/ui/nav-bar";
+import Footer from "../components/Footer";
 
 export default function BlogList({
   posts,
@@ -33,6 +34,7 @@ export default function BlogList({
             <BlogCard key={slug} meta={meta} slug={slug} />
           ))}
         </div>
+        <Footer/>
       </div>
     
   );

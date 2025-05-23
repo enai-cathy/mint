@@ -19,7 +19,7 @@ export default function ProductCard({
   image,
 }: ProductCardProps) {
   return (
-    <div className="border border-gray-200 rounded-3xl shadow-md hover:shadow-lg transition p-6 flex flex-col">
+    <div className="border border-gray-200 rounded-3xl shadow-md hover:shadow-lg transition p-6 mt-10 flex flex-col">
       {image && (
         <img
           src={image}

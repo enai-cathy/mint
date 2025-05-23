@@ -1,3 +1,4 @@
+import Footer from "@/app/components/Footer";
 import ProductCard from "@/app/components/ProductCard";
 const products = [
   {
@@ -60,6 +61,7 @@ const products = [
 
 export default function ProductsPage() {
   return (
+    <>
     <main>
       {/* header & description */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -67,6 +69,9 @@ export default function ProductsPage() {
           <ProductCard key={product.id} {...product} />
         ))}
       </section>
+      
     </main>
+    <Footer/>
+    </>
   );
 }

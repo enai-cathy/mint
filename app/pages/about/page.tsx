@@ -6,6 +6,7 @@ import {
   StarIcon,
 } from "@heroicons/react/24/outline"; 
 import Link from "next/link";
+import Footer from "@/app/components/Footer";
 
 export default function AboutPage() {
   return (
@@ -63,6 +64,7 @@ export default function AboutPage() {
           </button>
         </Link>
       </div>
+      <Footer/>
     </div>
   );
 }
