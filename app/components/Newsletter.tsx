@@ -14,26 +14,14 @@
 //     );
 //   }
 // components/NewsletterSignup.tsx (updated)
+// components/NewsletterSignup.tsx
 export default function NewsletterSignup() {
   return (
-    
-    <form
-      action="https://your-convertkit-form-url"
-      method="post"
-      className="bg-skyblue p-6 rounded-xl text-center mt-12"
-    >
-      <h2 className="text-xl font-bold mb-2">Subscribe to Mint Mogul 💌</h2>
-      <input
-        type="email"
-        name="email_address"
-        placeholder="Enter your email"
-        required
-        className="px-4 py-2 rounded-lg w-full md:w-80"
-      />
-      <button type="submit" className="bg-black text-white px-4 py-2 rounded-lg mt-4">
-        Subscribe
-      </button>
-    </form>
-    
-  )
+    <div className="mt-10 p-6 bg-blue-50 rounded-xl text-center">
+      <h3 className="text-lg font-semibold">Stay Updated!</h3>
+      <p className="text-sm text-gray-600">Get new posts delivered to your inbox.</p>
+      <input className="mt-2 p-2 border rounded-md w-full" placeholder="Your email" />
+      <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md">Subscribe</button>
+    </div>
+  );
 }

@@ -18,7 +18,7 @@ const links = [
   { name: "Premium", href: "/pages/premium", icon: SparklesIcon },
   {
     name: "Blog",
-    href: "/pages/blog",
+    href: "/blog",
     icon: DocumentDuplicateIcon,
   },
   { name: "Tools", href: "/pages/tools", icon: WrenchScrewdriverIcon },
@@ -37,6 +37,7 @@ export default function NavLinks() {
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
+            <p className=" md:hidden">{link.name}</p>
           </Link>
         );
       })}
