@@ -8,14 +8,18 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
 import type { PostMeta } from "@/app/lib/mdx";
 import readingTime from "reading-time";
+import { serialize } from "next-mdx-remote/serialize";
+
+
 
 type PageProps = {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 // Centralize the blog directory path
 const BLOG_DIR = path.join(process.cwd(), "content/blog");
+
+
 
 // Generate static params for static generation
 export async function generateStaticParams() {
@@ -40,14 +44,19 @@ export async function generateMetadata({
     const fileContent = await fs.readFile(filePath, "utf-8");
     const { data } = matter(fileContent);
     const meta = data as PostMeta;
+    
 
     return {
-      title: `${meta.title} | Mint Mogul`,
-      description: meta.summary,
+      title: "Mint Mogul | Smart Financial Insights",
+      description:
+        "Explore financial tools, tips, and guides for your money journey.",
       openGraph: {
         title: meta.title,
         description: meta.summary,
         images: [meta.coverImage],
+      },
+      alternates: {
+        canonical: `https://www.mintmogul.com/blog/${params.slug}`,
       },
     };
   } catch {
@@ -65,6 +74,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     const { content, data } = matter(fileContent);
     const meta = data as PostMeta;
     const readStats = readingTime(content);
+    const mdxSource = await serialize(content);
 
     return (
       <article className="max-w-3xl mx-auto px-4 py-10 prose prose-blue">
@@ -79,7 +89,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             className="w-full h-64 object-cover my-4 rounded-xl"
           />
         )}
-        <MDXRemote source={content} />
+        <MDXRemote source={mdxSource} />
       </article>
     );
   } catch {
