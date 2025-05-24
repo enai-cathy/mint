@@ -1,9 +1,6 @@
 import { EnvelopeIcon } from "@heroicons/react/24/outline"; // or /solid
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
-import PrivacyPolicy from "./PrivacyPolicy";
-import TermsOfService from "./TermsOfService";
-import AffiliateDisclosure from "./AffiliateDisclosure";
 import Link from "next/link";
 
 export default function Footer() {
@@ -28,22 +25,22 @@ export default function Footer() {
           </h3>
           <ul className="space-y-1">
             <li>
-              <Link href="/tools" className="hover:text-[#b3da67]">
+              <Link href="./tools" className="hover:text-[#b3da67]">
                 Top Tools
               </Link>
             </li>
             <li>
-              <Link href="/products" className="hover:text-[#b3da67]">
+              <Link href="./products" className="hover:text-[#b3da67]">
                 Smart Products
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="hover:text-[#b3da67]">
+              <Link href="../blog" className="hover:text-[#b3da67]">
                 Blog Insights
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-[#b3da67]">
+              <Link href="./about" className="hover:text-[#b3da67]">
                 About Us
               </Link>
             </li>
@@ -58,7 +55,7 @@ export default function Footer() {
           <ul className="space-y-1">
             <li>
               <Link
-                href="/Privacy"
+                href="./Privacy"
                 className="hover:text-[#536c32] text-blue-600 underline"
               >
                 Privacy Policy
@@ -66,7 +63,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/TermsPage"
+                href="./TermsPage"
                 className="hover:text-[#536c32] text-blue-600 underline"
               >
                 Terms of Service
@@ -74,7 +71,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/AffliateDisclosure"
+                href="./AffliateDisclosure"
                 className="hover:text-[#536c32] text-blue-600 underline"
               >
                 Affliate Disclosure
@@ -82,7 +79,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/contact"
+                href="/pages/contact"
                 className="hover:text-[#536c32] text-blue-600 underline"
               >
                 Contact Us

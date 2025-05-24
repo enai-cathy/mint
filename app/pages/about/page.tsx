@@ -1,5 +1,4 @@
 import Navbar from "@/app/ui/nav-bar";
-import Button  from "@/app/components/Button";
 import {
   CheckCircleIcon,
   CogIcon,
@@ -17,14 +16,14 @@ export default function AboutPage() {
       <p className="text-lg mb-8 text-gray-700">
         We’re not just another Money blog. Mint Mogul is your all-in-one
         playground for financial domination — built for big dreamers, and smart
-        savers who want more from their money *now*.
+        savers who want more from their money <strong>now.</strong>
       </p>
 
       <div className="space-y-8">
         <Section
           icon={<CogIcon className="text-blue-500 w-6 h-6" />}
           title="Tools That Think (So You Don’t Have To)"
-          content="From investment trackers to savings calculators and daily money hacks — our free API-powered tools do the heavy lifting so you can make moves like a mogul. All brain, no fluff."
+          content="From investment trackers to savings calculators and daily money hacks — our free Insight-powered tools do the heavy lifting so you can make moves like a mogul. All brain, no fluff."
         />
         <Section
           icon={<StarIcon className="text-yellow-500 w-6 h-6" />}
@@ -33,7 +32,7 @@ export default function AboutPage() {
         />
         <Section
           icon={<CheckCircleIcon className="text-green-600 w-6 h-6" />}
-          title="Curated Affiliate Picks You Can Actually Trust"
+          title="Curated Picks You Can Actually Trust"
           content="We only recommend tools we’d use ourselves. Think top-tier software, finance hacks, and subscription-worthy deals — all designed to 10x your money life."
         />
       </div>
@@ -58,7 +57,7 @@ export default function AboutPage() {
           Join thousands of modern moguls using Mint Mogul to work smarter,
           spend sharper, and build lasting wealth.
         </p>
-        <Link href="/products">
+        <Link href="./products">
           <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
             Explore the Tools & Templates
           </button>

@@ -83,7 +83,7 @@ export default function ContactPage() {
             <p>
               Prefer email? Reach us directly at:{" "}
               <a
-                href="mailto:support@mintmogul.com"
+                href="mailto:mintmogul@gmail.com"
                 className="text-green-700 dark:text-green-400 underline"
               >
                 support@mintmogul.com

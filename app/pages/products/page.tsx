@@ -7,7 +7,7 @@ const products = [
     description:
       "Track your monthly income and expenses effortlessly with a simple, clear layout designed for everyone worldwide.",
     price: "USD $15",
-    originalPrice: "USD $20",
+    originalPrice: "USD $30",
     link: "https://lemonsqueezy.com/products/monthly-budget-tracker?ref=your_affiliate_id",
     image: "/products/monthly-budget-tracker.png",
   },
@@ -16,7 +16,7 @@ const products = [
     title: "Debt Crusher Toolkit",
     description:
       "Organize and eliminate your debt faster with this globally trusted set of tools and strategies.",
-    price: "USD $25",
+    price: "USD $20",
     link: "https://lemonsqueezy.com/products/debt-crusher-toolkit?ref=your_affiliate_id",
     image: "/products/debt-crusher-toolkit.png",
   },
@@ -25,7 +25,7 @@ const products = [
     title: "Savings Goal Planner",
     description:
       "Set and track realistic savings goals, stay motivated, and watch your wealth grow — no matter where you live.",
-    price: "USD $9",
+    price: "USD $8",
     originalPrice: "USD $20",
     link: "https://gumroad.com/l/savings-goal-planner?ref=your_affiliate_id",
     image: "/products/savings-goal-planner.png",
@@ -35,7 +35,7 @@ const products = [
     title: "Net Worth & Wealth Builder",
     description:
       "Monitor assets and liabilities in one place, helping you confidently build wealth across borders.",
-    price: "USD $30",
+    price: "USD $150",
     link: "https://gumroad.com/l/net-worth-builder?ref=your_affiliate_id",
     image: "/products/net-worth-builder.png",
   },
@@ -54,6 +54,7 @@ const products = [
     description:
       "Manage recurring payments and subscriptions effortlessly to save money monthly, wherever you are.",
     price: "USD $10",
+    originalPrice: "USD $15",
     link: "https://gumroad.com/l/subscription-tracker?ref=your_affiliate_id",
     image: "/products/subscription-tracker.png",
   },

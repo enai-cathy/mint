@@ -1,6 +1,3 @@
-import Hero from "../components/Hero";
-
-
 import CurrencyWidget from "@/app/components/CurrencyWidget";
 import NewsletterSignup from "@/app/components/Newsletter";
 import AffiliateDisclosure from "@/app/components/AffiliateDisclosure";
@@ -12,8 +9,8 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Navbar from "../ui/nav-bar";
 import Footer from "../components/Footer";
 
-import Link from "next/link"
-
+import Link from "next/link";
+import ToolsPage from "./tools/page";
 
 export default function HomePage() {
   const products = [
@@ -54,10 +51,12 @@ export default function HomePage() {
               <br />
               Equip yourself with expert-backed tools and strategies to grow
               wealth and reach your money goals—smarter.
-              <br />{" "}
-              <Link href="/products" className="bg-[#b3da67] mt-10 m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
-                  Get Yours Now!
-            
+              <br /> <br />
+              <Link
+                href={"pages/products"}
+                className="bg-[#b3da67] mt-10 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200"
+              >
+                Get Yours Now!
               </Link>
             </span>
           </div>
@@ -92,9 +91,10 @@ export default function HomePage() {
               <br /> <span className="font-bold">Let our planner </span>chart
               your course to financial success.
             </p>{" "}
-            <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
+            <br/>
+            <Link href={"pages/tools"} className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
               Explore Our Free Tools Now!
-            </button>
+            </Link>
           </span>
 
           <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
@@ -117,8 +117,8 @@ export default function HomePage() {
       </section>
 
       <section className=" bg-[#f7f3eb] py-16 px-4">
-        <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-          <div className="flex flex-col justify-center gap-6 rounded-lg px-6 py-10 md:w-2/5 md:px-20">
+        <div className="mt-4 flex grow gap-4 md:flex-row">
+          <div className="flex justify-center gap-6 rounded-lg px-6 py-10 md:w-2/5 md:px-20">
             <span>
               {" "}
               <h1 className="text-5xl text-[#0e563d] font-bold">
@@ -195,9 +195,11 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
+            <br/>
+            <br/>
+            <Link href={"pages/tools"} className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
               Explore Our Free Tools Now!
-            </button>
+            </Link>
             <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
               <Image
                 src="/tablet-screen.png"
@@ -229,9 +231,11 @@ export default function HomePage() {
               <br /> <span className="font-bold">Let our planner </span>chart
               your course to financial success.
             </p>{" "}
-            <button className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
-              Explore Our Free Tools Now!
-            </button>
+            <br/>
+            <br/>
+            <Link href={"pages/tools"} className="bg-[#b3da67] m-6 text-charcoal font-semibold px-6 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
+            Download for Free Now!
+            </Link>
           </span>
 
           <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">

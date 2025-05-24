@@ -3,9 +3,9 @@
 export default function PrivacyPolicy() {
   return (
     <section className="max-w-4xl mx-auto px-4 py-12 text-gray-800 dark:text-gray-200">
-      <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
+      <h1 className="text-3xl text-[#536c32] font-bold mb-6">Privacy Policy</h1>
       <p className="mb-6">
-        Effective Date: <strong>[Insert Date]</strong>
+        Effective Date: <strong>5/24/2025</strong>
       </p>
 
       <div className="space-y-6">
@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold mb-2">7. Your Privacy Rights</h2>
           <p>
             You may request to access, update, or delete your data. Contact us
-            at <strong>[your@email.com]</strong>.
+            at <strong>mintmogul@gmail.com</strong>.
           </p>
         </section>
 
@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
           <p>
             Email:{" "}
             <a
-              href="mailto:your@email.com"
+              href="mailto:mintmogul@gmail.com"
               className="text-blue-600 dark:text-blue-400 underline"
             >
               your@email.com

@@ -10,7 +10,8 @@ const premiumProducts = [
     title: "The Ultimate Budget Blueprint",
     description:
       "Master your monthly income, expenses, and goals with this actionable eBook.",
-    price: "$190",
+    price: "$250",
+    originalPrice: "USD $450",
     coverImage: "/ebooks/budget-blueprint.jpg",
     link: "https://gumroad.com/l/budget-blueprint", // Replace with actual link
   },
@@ -19,7 +20,8 @@ const premiumProducts = [
     title: "Smart Savings Playbook",
     description:
       "Step-by-step savings strategy for real-life goals, big or small.",
-    price: "$140",
+    price: "$120",
+    originalPrice: "USD $350",
     coverImage: "/ebooks/savings-playbook.jpg",
     link: "https://gumroad.com/l/savings-playbook",
   },

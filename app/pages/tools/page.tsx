@@ -154,7 +154,7 @@ export default function ToolsPage() {
           Get early access to premium planners, financial tech hacks, and smart
           money deals — straight to your inbox.
         </p>
-        <Link href="/newsletter">
+        <Link href="./Newsletter">
           <button className="bg-[#b3da67] text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition text-lg">
             Join the Mogul List
           </button>

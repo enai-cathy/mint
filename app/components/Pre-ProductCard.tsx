@@ -5,6 +5,7 @@ type Product = {
   title: string;
   description: string;
   price: string;
+  originalPrice?: string;
   coverImage: string;
   link: string;
 };
@@ -21,6 +22,13 @@ export default function PremiumCard({ product }: { product: Product }) {
       <p className="text-gray-600 mb-3">{product.description}</p>
       <div className="flex items-center justify-between">
         <span className="text-green-600 font-bold">{product.price}</span>
+        <div className="mt-6 flex items-center justify-between">
+        {product.originalPrice && (
+          <span className="text-sm line-through text-gray-400 mr-2">
+            {product.originalPrice}
+          </span>
+        )}
+        </div>
         <a
           href={product.link}
           target="_blank"
