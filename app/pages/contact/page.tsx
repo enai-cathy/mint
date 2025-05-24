@@ -86,7 +86,7 @@ export default function ContactPage() {
                 href="mailto:mintmogul@gmail.com"
                 className="text-green-700 dark:text-green-400 underline"
               >
-                support@mintmogul.com
+                mintmogul@gmail.com
               </a>
             </p>
             <p className="mt-2">
