@@ -1,42 +1,39 @@
-// components/ToolCard.tsx
-import Link from "next/link";
+import Image from "next/image";
 
-// export default function ToolCard({
-//   title,
-//   description,
-//   url,
-// }: {
-//   title: string;
-//   description: string;
-//   url: string;
-// }) {
-//   return (
-//     <div className="bg-slate-800 p-6 rounded-2xl shadow-lg hover:bg-slate-700 transition">
-//       <h3 className="text-xl font-semibold text-gold">{title}</h3>
-//       <p className="text-slate-300 mt-2">{description}</p>
-//       <Link
-//         href={url}
-//         target="_blank"
-//         rel="noopener noreferrer"
-//         className="text-skyblue font-bold mt-4 block"
-//       >
-//         Try Now →
-//       </Link>
-//     </div>
-//   );
-// }
-export default function ToolCard({ name, description, affiliateUrl, image }) {
+interface ToolCardProps {
+  name: string;
+  description: string;
+  affiliateUrl: string;
+  image: string;
+}
+
+export default function ToolCard({
+  name,
+  description,
+  affiliateUrl,
+  image,
+}: ToolCardProps) {
   return (
     <a
       href={affiliateUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="bg-white rounded-xl shadow-lg overflow-hidden transition hover:scale-105"
+      aria-label={`Visit ${name} via affiliate link`}
+      className="flex flex-col bg-white rounded-2xl shadow-md hover:shadow-lg transition-transform hover:scale-105 overflow-hidden"
     >
-      <img src={image} alt={name} className="w-full h-40 object-contain p-4" />
+      <div className="relative w-full h-48 sm:h-56">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-contain p-4"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+        />
+      </div>
       <div className="p-4">
-        <h2 className="text-lg font-bold">{name}</h2>
-        <p className="text-sm text-gray-600">{description}</p>
+        <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
+        <p className="text-sm text-gray-600 mt-1">{description}</p>
       </div>
     </a>
   );
