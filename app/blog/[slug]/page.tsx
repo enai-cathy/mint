@@ -1,20 +1,24 @@
 import { notFound } from "next/navigation";
-import type { Metadata, ResolvingMetadata } from "next";
-import { getPostBySlug, getAllSlugs } from "@/app/lib/posts"; 
+import { Metadata } from "next";
+import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 
+// Type for page params
+type PageProps = {
+  params: { slug: string };
+};
 
-
-// Generate static paths for dynamic routes (SSG)
+// Static params (SSG)
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs(); // Returns string[]
+  const slugs = await getAllSlugs(); // string[]
   return slugs.map((slug) => ({ slug }));
 }
 
-// Generate page metadata (SEO) for each post
-export async function generateMetadata(
-  { params }: { params: { slug: string } },
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+// Metadata (SEO)
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -27,17 +31,13 @@ export async function generateMetadata(
   };
 }
 
-// The main page component for individual blog posts
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+// Page component
+export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = params;
   const post = await getPostBySlug(slug);
 
   if (!post) {
-    notFound();
+    notFound(); // 404 page
   }
 
   return (
