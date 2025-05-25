@@ -1,43 +1,31 @@
-// app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 
-// Generate static paths for SSG
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs(); // returns string[]
+  const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-// Generate SEO metadata for each post
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
-
-  if (!post) {
-    return { title: "Post Not Found" };
-  }
-
-  return {
-    title: post.title,
-    description: post.excerpt || "",
-  };
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) return { title: "Post Not Found" };
+  return { title: post.title, description: post.excerpt || "" };
 }
 
-// Page component
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await getPostBySlug(params.slug);
-
-  if (!post) {
-    notFound();
-  }
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+  if (!post) notFound();
 
   return (
     <article className="prose mx-auto py-12">
