@@ -1,19 +1,15 @@
+// app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 
-// Type for page params
-type PageProps = {
-  params: { slug: string };
-};
-
-// Static params (SSG)
+// Generate static paths for SSG
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs(); // string[]
+  const slugs = await getAllSlugs(); // returns string[]
   return slugs.map((slug) => ({ slug }));
 }
 
-// Metadata (SEO)
+// Generate SEO metadata for each post
 export async function generateMetadata({
   params,
 }: {
@@ -32,22 +28,22 @@ export async function generateMetadata({
 }
 
 // Page component
-export default async function BlogPostPage({ params }: PageProps) {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
-    notFound(); // 404 page
+    notFound();
   }
 
   return (
     <article className="prose mx-auto py-12">
       <h1 className="text-4xl font-bold">{post.title}</h1>
       <p className="text-gray-500">{post.date}</p>
-      <div
-        className="mt-6"
-        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-      />
+      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </article>
   );
 }
