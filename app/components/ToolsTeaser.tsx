@@ -19,8 +19,8 @@ export default function ToolsTeaser(){
         <br />
         <Link
           href={"/tools"}
-          className="bg-[#b3da67] text-charcoal font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200">
-
+          className="bg-[#b3da67] text-charcoal font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200"
+        >
           Explore Our Free Tools Now!
         </Link>
       </span>
@@ -30,7 +30,8 @@ export default function ToolsTeaser(){
           src="/mint-mogul.png"
           width={1000}
           height={760}
-          className="hidden md:block"
+          className="hidden md:block"      
+          loading="lazy"
           alt="Screenshots of the dashboard project showing desktop version"
         />
         <Image
@@ -38,6 +39,7 @@ export default function ToolsTeaser(){
           width={560}
           height={620}
           className="block md:hidden"
+          loading="lazy"
           alt="Screenshots of the dashboard project showing mobile version"
         />
       </div>

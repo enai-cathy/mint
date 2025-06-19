@@ -67,6 +67,7 @@ export default function FeaturesGrid() {
               width={1000}
               height={760}
               className="hidden md:block"
+                           loading="lazy"
               alt="Screenshots of the dashboard project showing desktop version"
             />
             <Image
@@ -74,6 +75,8 @@ export default function FeaturesGrid() {
               width={560}
               height={620}
               className="block md:hidden"
+            
+              loading="lazy"
               alt="Screenshots of the dashboard project showing mobile version"
             />
           </div>

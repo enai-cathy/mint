@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+"use client";
+import { useEffect } from "react";
+import { initPostHog } from "@/app/lib/posthog";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/ui/global.css";
 
@@ -16,7 +18,11 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) { 
+  
+  useEffect(() => {
+  initPostHog()
+}, []); 
   return (
     <html lang="en">
       <body
@@ -27,17 +33,7 @@ export default function RootLayout({
     </html>
   );
 }
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="en">
-//       <body>{children}</body>
-//     </html>
-//   );
-// }
+
 export const metadata = {
   title: "Mint Mogul – Smart Money for Smart Spenders",
   description:

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { text } from "node:stream/consumers";
+import posthog from "posthog-js";
 
 export default function EmailForm() {
   const [email, setEmail] = useState("");
@@ -39,6 +39,7 @@ export default function EmailForm() {
         className="w-full p-2 mb-4 border border-gray-300 rounded-md"
       />
       <button
+      onClick={() => posthog.capture('download_template_clicked')}
         type="submit"
         className="whitespace-nowrap bg-[#b3da67] m-3 text-charcoal font-semibold px-2 py-2 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200"
       >

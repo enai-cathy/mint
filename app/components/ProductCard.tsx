@@ -26,6 +26,7 @@ export default function ProductCard({
           alt={title}
           className="w-full h-44 object-contain mb-5 rounded-xl"
           loading="lazy"
+  
         />
       )}
       <h2 className="text-2xl font-semibold text-gray-800 mb-3">{title}</h2>
