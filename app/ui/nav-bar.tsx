@@ -21,14 +21,14 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex gap-4 items-center">
+            <div className="hidden lg:flex gap-4 items-center">
               <NavLinks />
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-[#536c32]"
+            className="lg:hidden p-2 text-[#536c32]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -42,7 +42,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className=" md:flex px-4 pb-4 space-y-2 pt-2 bg-[#fffbf1]">
+        <div className=" lg:flex px-4 pb-4 space-y-2 pt-2 bg-[#fffbf1]">
           <NavLinks />
         </div>
       )}

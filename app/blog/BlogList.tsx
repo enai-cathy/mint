@@ -34,7 +34,6 @@ export default function BlogList({
             <BlogCard key={slug} meta={meta} slug={slug} />
           ))}
         </div>
-        <Footer/>
       </div>
     
   );

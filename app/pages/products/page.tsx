@@ -6,10 +6,10 @@ const products = [
     title: "Monthly Budget Tracker",
     description:
       "Track your monthly income and expenses effortlessly with a simple, clear layout designed for everyone worldwide.",
-    price: "USD $15",
-    originalPrice: "USD $30",
-    link: "https://lemonsqueezy.com/products/monthly-budget-tracker?ref=your_affiliate_id",
-    image: "/products/monthly-budget-tracker.png",
+    price: "Free",
+    originalPrice: "USD $8",
+    link: "https://cathyspark262.gumroad.com/l/rseip",
+    image: "/free-template.png",
   },
   {
     id: "debt-crusher-toolkit",
@@ -18,7 +18,7 @@ const products = [
       "Organize and eliminate your debt faster with this globally trusted set of tools and strategies.",
     price: "USD $20",
     link: "https://lemonsqueezy.com/products/debt-crusher-toolkit?ref=your_affiliate_id",
-    image: "/products/debt-crusher-toolkit.png",
+    image: "/debt.png",
   },
   {
     id: "savings-goal-planner",
@@ -28,7 +28,7 @@ const products = [
     price: "USD $8",
     originalPrice: "USD $20",
     link: "https://gumroad.com/l/savings-goal-planner?ref=your_affiliate_id",
-    image: "/products/savings-goal-planner.png",
+    image: "/savings-planner.png",
   },
   {
     id: "net-worth-builder",
@@ -37,7 +37,7 @@ const products = [
       "Monitor assets and liabilities in one place, helping you confidently build wealth across borders.",
     price: "USD $150",
     link: "https://gumroad.com/l/net-worth-builder?ref=your_affiliate_id",
-    image: "/products/net-worth-builder.png",
+    image: "/net-worth.png",
   },
   {
     id: "small-biz-bookkeeping-kit",
@@ -46,7 +46,7 @@ const products = [
       "Ideal for entrepreneurs everywhere — track expenses, revenue, and taxes with ease.",
     price: "USD $40",
     link: "https://lemonsqueezy.com/products/small-biz-bookkeeping-kit?ref=your_affiliate_id",
-    image: "/products/small-biz-bookkeeping-kit.png",
+    image: "/small-business.png",
   },
   {
     id: "subscription-tracker",
@@ -56,7 +56,7 @@ const products = [
     price: "USD $10",
     originalPrice: "USD $15",
     link: "https://gumroad.com/l/subscription-tracker?ref=your_affiliate_id",
-    image: "/products/subscription-tracker.png",
+    image: "/subscription.png",
   },
 ];
 

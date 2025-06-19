@@ -22,7 +22,7 @@ const premiumProducts = [
       "Step-by-step savings strategy for real-life goals, big or small.",
     price: "$120",
     originalPrice: "USD $350",
-    coverImage: "/ebooks/savings-playbook.jpg",
+    coverImage: "/ebooks/savings-playbook.png",
     link: "https://gumroad.com/l/savings-playbook",
   },
 ];
