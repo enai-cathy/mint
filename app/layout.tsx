@@ -1,8 +1,12 @@
-"use client";
-import { useEffect } from "react";
-import { initPostHog } from "@/app/lib/posthog";
+// app/layout.tsx (server component)
+
+import { Metadata } from "next";
+import { siteConfig } from "@/app/lib/siteConfig";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/ui/global.css";
+import PostHogClientProvider from "@/app/components/PostHogClientProvider";
+import Navbar from "./ui/nav-bar";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,38 +18,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) { 
-  
-  useEffect(() => {
-  initPostHog()
-}, []); 
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
-
-export const metadata = {
-  title: "Mint Mogul – Smart Money for Smart Spenders",
-  description:
-    "Discover financial tools, digital products, and tips built for high-level spenders and savvy earners.",
+export const metadata: Metadata = {
+  title: `${siteConfig.name} – Smart Money for Smart Spenders`,
+  description: siteConfig.description,
   openGraph: {
-    title: "Mint Mogul",
-    description: "Smart financial tools and digital assets for high spenders.",
-    url: "https://mintmogul.com",
-    siteName: "Mint Mogul",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     images: [
       {
-        url: "/og-image.jpg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
       },
@@ -55,7 +38,26 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@mintmogul",
-    creator: "@mintmogul",
+    site: siteConfig.twitterHandle,
+    creator: siteConfig.twitterHandle,
   },
 };
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Navbar/>
+        <PostHogClientProvider />
+        {children}
+        <Footer/>
+      </body>
+    </html>
+  );
+}

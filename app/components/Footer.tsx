@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f9fafb] dark:bg-gray-950 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800 mt-12">
+    <footer className="bg-[#f9fafb] dark:bg-gray-950 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800" >
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4 text-sm">
         {/* Brand + Mission */}
         <div>
@@ -135,6 +135,12 @@ export default function Footer() {
         <p className="text-gray-500 dark:text-gray-600">
           &copy; {new Date().getFullYear()} Mint Mogul. Smarter money starts
           here.
+        </p>
+        <p className="text-center text-sm text-gray-500 mt-8">
+          Built from scratch by Ige-Edaba Enaikato Cathy using Next.js &
+          Tailwind CSS – focused on intuitive design, modular code, and
+          real-world usability. Crafted with clarity, trust, and behavioral
+          design in mind
         </p>
       </div>
     </footer>
