@@ -1,5 +1,7 @@
+'use client'
 import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
+import posthog from "posthog-js";
 
 interface ProductCardProps {
   title: string;
@@ -23,14 +25,13 @@ export default function ProductCard({
       {image && (
         <img
           src={image}
-          alt={title}
+          alt={`${title} preview`}
           className="w-full h-44 object-contain mb-5 rounded-xl"
           loading="lazy"
-  
         />
       )}
       <h2 className="text-2xl font-semibold text-gray-800 mb-3">{title}</h2>
-      <p className="text-gray-600 flex-grow">{description}</p>
+      <p className="text-gray-600 flex-grow line-clamp-3">{description}</p>
       <div className="mt-6 flex items-center justify-between">
         {originalPrice && (
           <span className="text-sm line-through text-gray-400 mr-2">
@@ -42,7 +43,9 @@ export default function ProductCard({
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center px-5 py-2 bg-blue-600 text-white rounded-2xl text-sm font-semibold hover:bg-blue-700 transition"
+          onClick={() => posthog.capture("clicked_product_card", { title })}
+          aria-label={`Buy ${title}`}
+          className="inline-flex items-center px-5 py-2 bg-blue-600 text-white rounded-2xl text-sm font-semibold hover:bg-blue-700 transition-all duration-200"
         >
           Buy Now
           <ArrowTopRightOnSquareIcon className="ml-2 h-5 w-5" />

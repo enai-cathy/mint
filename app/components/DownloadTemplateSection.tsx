@@ -9,7 +9,7 @@ export default function DownloadTemplate() {
       <>
         <div className="mt-4 flex grow flex-col gap-4 md:flex-col">
           <span>
-            <h1 className="text-5xl text-[#0e563d] font-bold">
+            <h1 className="text-5xl text-center text-[#0e563d] font-bold">
               Download Your Free Monthly Savings Template
             </h1>{" "}
             <br />

@@ -1,9 +1,7 @@
+'use client'
 import React from "react";
-import Link from "next/link";
 import ProductCard from "./ProductCard";
-
-
-
+import {motion } from 'framer-motion'
 
 export default function ProductShowcase(){
      const products = [
@@ -32,33 +30,34 @@ export default function ProductShowcase(){
     
     return (
       <>
-        <div className="mt-4 flex grow gap-4 md:flex-row">
-          <div className="flex justify-center gap-6 rounded-lg px-6 py-10 md:w-2/5 md:px-20">
+        <div className="mt-4 flex grow flex-col gap-4">
+         
             <span>
               {" "}
-              <h1 className="text-5xl text-[#0e563d] font-bold">
+              <h1 className="text-4xl text-center text-[#0e563d] font-bold">
                 Curated for Any Stage of Wealth Building
               </h1>{" "}
               <br />
-              <p className="text-l text-[#0e563d]">
+              <p className="text-xl text-center text-[#0e563d]">
                 Whether you're starting out or scaling up, Mint Mogul equips you
                 with what you need to build real wealth and
-                <br /> <span className="font-bold">meet your needs. </span>
+                 <span className="font-bold"> meet your needs. </span>
               </p>{" "}
             </span>
           </div>
-        </div>
-        <div className="mt-12">
+        
+        <div className="mt-12 flex grow gap-4 md:flex-row">
           <main className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard
+            {products.map((product, index) => (
+              <motion.div
                 key={product.title}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                image={product.image}
-                link={product.link}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ProductCard {...product} />
+              </motion.div>
             ))}
           </main>
         </div>
