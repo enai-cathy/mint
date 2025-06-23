@@ -1,11 +1,11 @@
-import Footer from "@/app/components/Footer";
-import ToolCard from "@/app/components/ToolCard";
+'use client'
 import {
-  CheckIcon,
   ArrowRightIcon,
-  ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { posthog } from "posthog-js";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion"
 
 
 const tools = [
@@ -23,7 +23,7 @@ const tools = [
       "Receive payments from global companies and freelance platforms in USD, EUR, GBP. Withdraw to your Nigerian bank account.",
     link: "https://www.payoneer.com/partners/",
     cta: "Register Now",
-    type: "Cross-Border Payments",
+    type: "Banking & Payments",
   },
   {
     title: "The Monthly Budget Tracker (Template)",
@@ -45,7 +45,7 @@ const tools = [
     title: "Gumroad – Sell Digital Products Fast",
     description:
       "Sell eBooks, courses, or financial tools? Gumroad is a no-fuss platform for creators that gets you paid quickly. Perfect for side hustlers.",
-    type: "creator platform",
+    type: "Creator Platform",
     link: "https://gumroad.com?ref=your_affiliate_id",
     cta: "Try Gumroad",
     external: true,
@@ -56,7 +56,7 @@ const tools = [
       "Upload your products, set your prices, and let Payhip handle VAT, hosting, and payments—even in Nigeria. Perfect for budget trackers & planners.",
     link: "https://payhip.com/affiliates",
     cta: "Join Payhip",
-    type: "Digital Product Platform",
+    type: "Digital Product",
   },
   {
     title: "ConvertKit – Build a Wealthy Email List",
@@ -94,15 +94,20 @@ const tools = [
 ];
 
 export default function ToolsPage() {
+  const [selectedType, setSelectedType] = useState("all");
+  const [loading, setLoading] = useState(true);
+  const filteredtools =
+  selectedType ==="all"
+  ?tools
+  :tools.filter((p) => p.type === selectedType)
+
+  useEffect(() => {
+    posthog.capture("viewed_tools_page");
+    const timeout = setTimeout(() => setLoading (false), 1000);
+    return() =>clearTimeout(timeout)
+  }, []);
+
   return (
-    // <div className="max-w-6xl mx-auto py-10 px-6">
-    //   <h1 className="text-3xl font-bold mb-6">Top Financial Tools 💼</h1>
-    //   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-    //     {tools.map((tool) => (
-    //       <ToolCard key={tool.name} {...tool} />
-    //     ))}
-    //   </div>
-    // </div>
     <div className="max-w-5xl mx-auto px-6 py-16 text-gray-900">
       <h1 className="text-4xl font-bold mb-4 text-[#536c32]">
         Tools & Templates for Money Moguls
@@ -112,12 +117,67 @@ export default function ToolsPage() {
         the tools that get you closer to wealth. Everything listed here is
         either made by us or handpicked for its value and credibility.
       </p>
+      {/* <div className="flex justify-center gap-4 mt-6 flex-wrap">
+        {[
+          { label: "All", value: "all" },
+          { label: "Banking & Payment", value: "Banking & Payment" },
+          { label: "Privacy Tool", value: "Privacy Tool" },
+          { label: "Creator Platform", value: "Creator Platform" },
+          { label: "Email Marketing", value: "Email Marketing" },
+          { label: "Investment Tools", value: "Investment Tools" },
+          { label: "Digital Products", value: "Digital Products" },
+        ].map((cat) => (
+          <button
+            key={cat.value}
+            onClick={() => setSelectedType(cat.value)}
+            className={`px-4 py-2 rounded-full border text-sm font-medium transition ${
+              selectedType === cat.value
+                ? "bg-green-600 text-white"
+                : "bg-white text-gray-800 border-gray-300 hover:bg-gray-100"
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div> */}
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {tools.map((tool, index) => (
-          <div
+      <div className="mb-10">
+        <label
+          htmlFor="tool-type"
+          className="block mb-2 text-sm font-medium text-gray-700"
+        >
+          Filter by Tool Type
+        </label>
+        <select
+          id="tool-type"
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)}
+          className="block w-full md:w-1/2 p-2 border border-gray-300 rounded-lg focus:ring-[#b3da67] focus:border-[#b3da67]"
+        >
+          <option value="all">All</option>
+          <option value="Banking & Payments">Banking & Payments</option>
+          <option value="Privacy Tool">Privacy Tool</option>
+          <option value="Creator Platform">Creator Platform</option>
+          <option value="Email Marketing">Email Marketing</option>
+          <option value="Investment Tools">Investment Tools</option>
+          <option value="Digital Product">Digital Product</option>
+        </select>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-10">
+        {loading ? (
+          Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="bg-gray-100 animate-pulse p-6 rounded-2xl h-48"></div>
+          ))
+        ) : filteredtools.length > 0 ? (
+          filteredtools.map((tool, index) => (
+          <motion.div
             key={index}
             className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition border border-gray-100"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            viewport={{ once: true }}
           >
             <p className="text-sm text-gray-500 uppercase mb-2">{tool.type}</p>
             <h2 className="text-xl font-semibold text-gray-800 mb-2">
@@ -131,7 +191,7 @@ export default function ToolsPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-[#b3da67] font-medium hover:underline"
               >
-                {tool.cta}{" "}
+                {tool.cta}
                 <ArrowRightIcon className="w-4 h-4 ml-1 text-[#b3da67]" />
               </a>
             ) : (
@@ -139,11 +199,17 @@ export default function ToolsPage() {
                 href={tool.link ?? "/"}
                 className="inline-flex items-center text-[#b3da67] font-medium hover:underline"
               >
-                {tool.cta} <ArrowRightIcon className="w-4 h-4 ml-1" />
+                {tool.cta}
+                <ArrowRightIcon className="w-4 h-4 ml-1" />
               </Link>
             )}
-          </div>
-        ))}
+          </motion.div>
+        ))
+      ) : (
+          <p className="text-center text-gray-500 col-span-full">
+            No tools found for this category.
+          </p>
+        )}
       </div>
 
       <div className="mt-16 bg-[#536c32] rounded-xl p-8 text-center">
@@ -155,12 +221,11 @@ export default function ToolsPage() {
           money deals — straight to your inbox.
         </p>
         <Link href="./Newsletter">
-          <button className="bg-[#b3da67] text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition text-lg">
+          <button className="bg-[#b3da67] text-white px-6 py-3 rounded-full shadow hover:bg-green-200 transition text-lg">
             Join the Mogul List
           </button>
         </Link>
       </div>
-      <Footer/>
     </div>
   );
 }

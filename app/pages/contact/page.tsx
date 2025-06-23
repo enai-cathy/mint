@@ -1,6 +1,36 @@
+"use client";
+
 import Head from "next/head";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { posthog } from "posthog-js";
 
 export default function ContactPage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    posthog.capture("submitted_contact_form", formData);
+    toast.success("Thanks! We'll get back to you soon.");
+
+    // Optional: delay before redirect
+    setTimeout(() => {
+      router.push("/pages/products");
+    }, 1500);
+  };
+
   return (
     <>
       <Head>
@@ -22,7 +52,10 @@ export default function ContactPage() {
             Mint Mogul serves a global community.
           </p>
 
-          <form className="space-y-6 bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-md">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-md"
+          >
             <div>
               <label
                 htmlFor="name"
@@ -32,7 +65,10 @@ export default function ContactPage() {
               </label>
               <input
                 type="text"
+                name="name"
                 id="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
                 placeholder="Jane Doe"
                 required
@@ -48,7 +84,10 @@ export default function ContactPage() {
               </label>
               <input
                 type="email"
+                name="email"
                 id="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
                 placeholder="you@example.com"
                 required
@@ -64,6 +103,9 @@ export default function ContactPage() {
               </label>
               <textarea
                 id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={5}
                 className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
                 placeholder="Type your message here..."

@@ -1,4 +1,3 @@
-// app/layout.tsx (server component)
 
 import { Metadata } from "next";
 import { siteConfig } from "@/app/lib/siteConfig";
@@ -21,6 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: `${siteConfig.name} – Smart Money for Smart Spenders`,
   description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url), 
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,

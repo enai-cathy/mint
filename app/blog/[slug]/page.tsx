@@ -15,7 +15,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
-  return { title: post.title, description: post.excerpt || "" };
+  return {
+    title: `${post.title} | Mint Mogul Blog`,
+    description: post.excerpt || "",
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.coverImage ?? "/default-og.png"],
+    },
+  };
 }
 
 export default async function BlogPostPage({
@@ -26,11 +34,13 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
-
+//Blog/slug/page
   return (
-    <article className="prose mx-auto py-12">
-      <h1 className="text-4xl font-bold">{post.title}</h1>
-      <p className="text-gray-500">{post.date}</p>
+    <article className="prose lg:prose-lg max-w-4xl mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-[#0e563d] mb-2">{post.title}</h1>
+      <p className="text-sm text-gray-500 mb-6">
+        {new Date(post.date).toDateString()}
+      </p>
       <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
     </article>
   );

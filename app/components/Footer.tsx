@@ -1,4 +1,4 @@
-import { EnvelopeIcon } from "@heroicons/react/24/outline"; // or /solid
+
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 import Link from "next/link";
@@ -6,8 +6,8 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#f9fafb] dark:bg-gray-950 text-gray-700 dark:text-gray-300 border-t border-gray-200 dark:border-gray-800" >
-      <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4 text-sm">
-        {/* Brand + Mission */}
+      <div className="max-w-7xl mx-auto px-6 py-12 grid gap-10 lg:grid-cols-4 text-sm">
+
         <div>
           <h2 className="text-lg font-bold text-[#536c32] dark:text-green-300">
             Mint Mogul
@@ -18,7 +18,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
+      
         <div>
           <h3 className="text-md font-semibold mb-2 text-gray-900 dark:text-gray-100">
             Explore
@@ -47,7 +47,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Trust & Policies */}
+        
         <div>
           <h3 className="text-md font-semibold mb-2 text-gray-900 dark:text-gray-100">
             Trust & Legal
@@ -88,7 +88,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter + Socials */}
+       
         <div>
           <h3 className="text-md font-semibold mb-2 text-gray-900 dark:text-gray-100">
             Stay Smart
@@ -96,7 +96,7 @@ export default function Footer() {
           <p className="mb-3">
             Get financial tools, smart tips, and exclusive offers in your inbox.
           </p>
-          <form className="flex flex-col sm:flex-row gap-2">
+          <form className="flex flex-col md:flex-row gap-2">
             <input
               type="email"
               placeholder="Your email"

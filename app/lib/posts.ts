@@ -7,10 +7,11 @@ const postsDir = path.join(process.cwd(), "content", "blog");
 
 // Define a Post type for consistency
 export type Post = {
+  [x: string]: string;
   slug: string;
   title: string;
   date: string;
-  excerpt?: string;
+  excerpt: string;
   contentHtml: string; // We'll convert MDX/Markdown to HTML later if needed
 };
 

@@ -8,7 +8,7 @@ export default function BlogLayout({
 }) {
   return (
     <>
-      <Navbar />
+    
       <main>{children}</main>
     </>
   );
