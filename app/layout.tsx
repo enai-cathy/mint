@@ -4,8 +4,10 @@ import { siteConfig } from "@/app/lib/siteConfig";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/ui/global.css";
 import PostHogClientProvider from "@/app/components/PostHogClientProvider";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import Navbar from "./ui/nav-bar";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,10 +55,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar/>
+        <Navbar />
         <PostHogClientProvider />
+        <GoogleAnalytics GA_ID="G-267Z40X0H3" />
         {children}
-        <Footer/>
+        <Toaster position="top-right" reverseOrder={false} />
+        <Footer />
       </body>
     </html>
   );

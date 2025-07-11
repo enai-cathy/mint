@@ -18,7 +18,7 @@ export default function ToolsTeaser(){
         </p>{" "}
         <br />
         <Link
-          href={"/tools"}
+          href={"/pages/tools"}
           className="bg-[#b3da67] text-charcoal font-semibold px-6 py-3 rounded-2xl shadow-md hover:bg-yellow-400 transition-all duration-200"
         >
           Explore Our Free Tools Now!
