@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import NavLinks from "@/app/ui/dashboard/nav-links";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import Lottie from "lottie-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,7 +21,9 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        scrolled ? "bg-[#fffbf1]/90 backdrop-blur shadow-md" : "bg-transparent"
+        scrolled
+          ? "bg-bg-[#f9fafb]/90 backdrop-blur shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,8 +34,15 @@ export default function Navbar() {
               href="/"
               className="text-lg font-bold text-[#536c32] px-2 transition-transform hover:scale-105 hover:text-[#88c057]"
             >
-              <span className="transition-transform duration-300 hover:animate-bounce">
+              <span className="flex items-center gap-2 transition-transform duration-300 hover:animate-bounce">
                 Mint Mogul
+                <Lottie
+                  animationData={require("@/public/animation/3D-Money-Icon.json")} // or use a remote JSON
+                  loop
+                  autoplay
+                  className="w-full h-auto"
+                  style={{ height: "30px", width: "30px" }}
+                />
               </span>
             </Link>
 
@@ -64,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile Nav Links */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 right-4 w-64 bg-[#fffbf1]/90  shadow-lg border border-[#dfe6d4] z-50 p-4 space-y-3">
+        <div className="absolute top-16 right-4 w-64 bg-bg-[#f9fafb]/90  shadow-lg border border-[#dfe6d4] z-50 p-4 space-y-3">
           <NavLinks />
           <Link
             href="/Newsletter"

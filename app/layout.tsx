@@ -8,6 +8,11 @@ import GoogleAnalytics from "./components/GoogleAnalytics";
 import Navbar from "./ui/nav-bar";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
+import SparkleTrail from "@/app/components/SparkleTrail";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +60,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <SparkleTrail />
         <Navbar />
         <PostHogClientProvider />
         <GoogleAnalytics GA_ID="G-267Z40X0H3" />

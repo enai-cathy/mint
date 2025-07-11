@@ -71,6 +71,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Lottie from "lottie-react";
 
 const categories = ["All", "Save", "Spend", "Track"];
 
@@ -81,7 +82,7 @@ const allProducts = [
     tooltip: "Auto-track means less stress 💆🏽‍♀️",
     category: "Track",
     price: "$9.99",
-    image: "/images/wealth-tracker.png",
+    image: "/net-worth.png",
     link: "/products/wealth-tracker",
   },
   {
@@ -90,7 +91,7 @@ const allProducts = [
     tooltip: "Pay it down faster 🚀",
     category: "Spend",
     price: "$14.99",
-    image: "/images/debt-crusher.png",
+    image: "/debt.png",
     link: "/products/debt-crusher-toolkit",
   },
   {
@@ -99,7 +100,7 @@ const allProducts = [
     tooltip: "Save with purpose 🧠",
     category: "Save",
     price: "$7.99",
-    image: "/images/savings-goal.png",
+    image: "/savings-planner.png",
     link: "/products/savings-goal-tracker",
   },
 ];
@@ -144,7 +145,8 @@ export default function ProductShowcase() {
       </div>
 
       {/* Product Grid */}
-      <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+
+      <div className=" grid gap-8 sm:grid-cols-2 md:grid-cols-3">
         {filteredProducts.map((product, index) => (
           <motion.div
             key={product.title}
@@ -156,7 +158,7 @@ export default function ProductShowcase() {
             className="group relative bg-white border rounded-2xl shadow-md p-4 transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
           >
             {/* Tooltip */}
-            <div className="absolute top-2 right-2 bg-[#0e563d] text-white text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition duration-300">
+            <div className="absolute z-10 top-2 right-2 bg-[#0e563d] text-white text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition duration-300">
               {product.tooltip}
             </div>
 

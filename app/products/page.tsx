@@ -5,6 +5,7 @@ import ProductCard from "@/app/components/ProductCard";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { posthog } from "posthog-js";
+import Tilt from "react-parallax-tilt";
 
 // Add at top
 
@@ -150,7 +151,14 @@ export default function ProductsPage() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <ProductCard {...product} />
+              <Tilt
+                glareEnable={true}
+                glareMaxOpacity={0.15}
+                scale={1.02}
+                transitionSpeed={250}
+              >
+                <ProductCard {...product} />
+              </Tilt>
             </motion.div>
           ))}
         </section>
