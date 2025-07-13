@@ -25,7 +25,7 @@ const links = [
   { name: "Contact Us", href: "/contact", icon: EnvelopeIcon },
 ];
 
-export default function NavLinks() {
+export default function NavLinks({ onLinkClick }: { onLinkClick?: () => void }) {
   return (
     <>
       {links.map((link) => {
@@ -34,6 +34,7 @@ export default function NavLinks() {
           <Link
             key={link.name}
             href={link.href}
+            onClick={onLinkClick}
             className="group flex h-[48px] grow items-center justify-center md:justify-start gap-2 p-3 text-sm font-medium rounded-md text-[#536c32] hover:text-white hover:bg-[#a5c37e] transition-all duration-300 ease-in-out md:flex-none md:p-2 md:px-3"
           >
             {/* Icon with subtle hover bounce */}

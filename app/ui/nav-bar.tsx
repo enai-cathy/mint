@@ -18,6 +18,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
@@ -75,9 +77,10 @@ export default function Navbar() {
       {/* Mobile Nav Links */}
       {mobileMenuOpen && (
         <div className="absolute top-16 right-4 w-64 bg-[#f9fafb]/90  shadow-lg border border-[#dfe6d4] z-50 p-4 space-y-3">
-          <NavLinks />
+          <NavLinks onLinkClick={closeMobileMenu} />
           <Link
             href="/Newsletter"
+            onClick={closeMobileMenu}
             className="block w-full text-center mt-2 px-4 py-2 rounded-md bg-[#88c057] text-white font-medium hover:bg-[#a6e88e] transition duration-300"
           >
             Get Started
