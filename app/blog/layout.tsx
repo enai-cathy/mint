@@ -1,5 +1,4 @@
 // app/blog/layout.tsx
-import Navbar from "@/app/ui/nav-bar";
 
 export default function BlogLayout({
   children,
@@ -9,7 +8,7 @@ export default function BlogLayout({
   return (
     <>
     
-      <main>{children}</main>
+      <main className="mt-20">{children}</main>
     </>
   );
 }

@@ -34,7 +34,7 @@ export default function CoinsBackground() {
               options: {
                 image: [
                   {
-                    src: "/coin.svg",
+                    src: "/icons/coin.svg",
                     width: 32,
                     height: 32,
                   },

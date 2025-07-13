@@ -74,7 +74,7 @@ export default function Navbar() {
 
       {/* Mobile Nav Links */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 right-4 w-64 bg-bg-[#f9fafb]/90  shadow-lg border border-[#dfe6d4] z-50 p-4 space-y-3">
+        <div className="absolute top-16 right-4 w-64 bg-[#f9fafb]/90  shadow-lg border border-[#dfe6d4] z-50 p-4 space-y-3">
           <NavLinks />
           <Link
             href="/Newsletter"

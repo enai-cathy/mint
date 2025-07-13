@@ -46,7 +46,7 @@ export default function ToolsTeaser(){
       >
         <div className=" max-w-7xl mx-auto px-4">
           <span>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-[#0e563d] to-[#84cc16] text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold text-[#0e563d] bg-clip-text">
               The Blueprint for Financial Success
             </h1>
             <br />{" "}

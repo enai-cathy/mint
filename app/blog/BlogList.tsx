@@ -36,14 +36,15 @@ export default function BlogList({
           setQuery(e.target.value);
           posthog.capture("searched_blog", { query: e.target.value });
         }}
-        className="w-full mb-6 p-2 border rounded-md"
+        className="w-full mb-6 p-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-[#b3da67] focus:outline-none placeholder:text-gray-400"
       />
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Array.from({ length: 6 }).map((_,i) => (
-            <div 
-            key={`skeleton-${i}`} 
-            className="animate-pulse bg-white rounded-xl shadow p-4 space-y-4 border">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={`skeleton-${i}`}
+              className="animate-pulse bg-white rounded-xl shadow p-4 space-y-4 border border-dashed border-gray-300"
+            >
               <div className="h-40 bg-gray-200 rounded-md" />
               <div className="h-4 bg-gray-200 rounded w-3/4" />
               <div className="h-3 bg-gray-200 rounded w-1/2" />
@@ -52,7 +53,9 @@ export default function BlogList({
           ))}
         </div>
       ) : filteredPosts.length === 0 ? (
-        <p className="text-gray-500 text-center">No blog posts found.</p>
+        <p className="text-gray-500 text-center italic">
+          No blog posts found. Try a different keyword!
+        </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map(({ meta, slug }, index) => (
@@ -60,6 +63,7 @@ export default function BlogList({
               key={slug}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               viewport={{ once: true }}
               onClick={() =>

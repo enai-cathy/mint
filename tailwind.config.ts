@@ -17,6 +17,9 @@ const config: Config = {
         gold: "#FACC15",
         slate: "#64748B",
       },
+      animation:{
+        'spin-slow':'spin 8s linear infinite'
+      }
     },
     keyframes: {
       shimmer: {

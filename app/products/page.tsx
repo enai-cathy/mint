@@ -1,13 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import Footer from "@/app/components/Footer";
 import ProductCard from "@/app/components/ProductCard";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { posthog } from "posthog-js";
 import Tilt from "react-parallax-tilt";
-
-// Add at top
 
 
 const products = [
@@ -78,16 +75,15 @@ const products = [
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const filteredProducts = 
-  selectedCategory === "all"
-  ?products
-  :products.filter((p) => p.category === selectedCategory)
-
+  const filteredProducts =
+    selectedCategory === "all"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   useEffect(() => {
     posthog.capture("viewed_products_page");
   }, []);
-  
+
   return (
     <>
       <Head>
@@ -109,16 +105,42 @@ export default function ProductsPage() {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <main className="px-6 py-12 max-w-7xl mx-auto">
-        <section className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-[#0e563d]">
+      <main className="relative max-w-6xl mx-auto px-4 py-20 text-gray-900 sm:text-lg">
+        {/* Blob background accents */}
+        <div className="absolute top-[-100px] left-[-50px] w-60 h-60 bg-[#b3da67]/30 blur-3xl rounded-full z-[-1] animate-pulse" />
+        <div className="absolute bottom-[-80px] right-[-40px] w-72 h-72 bg-[#0e563d]/20 blur-2xl rounded-full z-[-1] animate-spin-slow" />
+
+        {/* 💸 floating emoji accent */}
+        <motion.div
+          className="absolute top-10 left-1/2 text-5xl -translate-x-1/2 z-0"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+        >
+          💸
+        </motion.div>
+
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center relative z-10"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold font-serif bg-gradient-to-r from-[#0e563d] to-[#b3da67] text-transparent bg-clip-text mb-6">
             Explore Our Financial Templates
           </h1>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto mt-4">
+          <p className="text-gray-700 max-w-2xl mx-auto leading-relaxed mb-6">
             Trusted, flexible, and globally friendly tools to help you budget
             better, save smarter, and reach your money goals.
           </p>
-          <div className="flex justify-center gap-4 mt-6 flex-wrap">
+
+          {/* Category Filters */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center flex-wrap gap-3"
+          >
             {[
               { label: "All", value: "all" },
               { label: "Budget", value: "budget" },
@@ -127,22 +149,24 @@ export default function ProductsPage() {
               { label: "Wealth", value: "wealth" },
               { label: "Business", value: "business" },
             ].map((cat) => (
-              <button
+              <motion.button
+                whileHover={{ scale: 1.05 }}
                 key={cat.value}
                 onClick={() => setSelectedCategory(cat.value)}
-                className={`px-4 py-2 rounded-full border text-sm font-medium transition ${
+                className={`px-4 py-2 rounded-full border overflow-x-auto text-sm font-medium transition ${
                   selectedCategory === cat.value
-                    ? "bg-green-600 text-white"
+                    ? "bg-gradient-to-r from-[#0e563d] to-[#b3da67] text-white"
                     : "bg-white text-gray-800 border-gray-300 hover:bg-gray-100"
                 }`}
               >
                 {cat.label}
-              </button>
+              </motion.button>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        {/* Product Grid */}
+        <section className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 pb-10 relative z-10">
           {filteredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -150,20 +174,25 @@ export default function ProductsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
+              className="flex"
             >
               <Tilt
                 glareEnable={true}
                 glareMaxOpacity={0.15}
                 scale={1.02}
                 transitionSpeed={250}
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                className="transition-transform duration-300 hover:drop-shadow-[0_0_10px_#b3da67]"
               >
-                <ProductCard {...product} />
+                <div className="w-full h-full">
+                  <ProductCard {...product} />
+                </div>
               </Tilt>
             </motion.div>
           ))}
         </section>
       </main>
-      <Footer />
     </>
   );
 }
