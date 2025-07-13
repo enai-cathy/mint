@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { posthog } from "posthog-js";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -41,8 +42,16 @@ export default function ContactPage() {
         />
       </Head>
 
-      <section className="min-h-screen bg-white dark:bg-gray-950 py-16 px-6 md:px-10">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative min-h-screen bg-white dark:bg-gray-950 py-20 px-6 md:px-10 overflow-hidden">
+        {/* Floating blobs */}
+        <div className="absolute top-0 left-10 w-40 h-40 bg-[#b3da67]/30 rounded-full blur-2xl animate-pulse -z-10" />
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#84cc16]/25 rounded-full blur-2xl animate-spin-slow -z-10" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto"
+        >
           <h1 className="text-4xl md:text-5xl font-bold text-[#536c32] dark:text-white mb-6">
             Contact Us
           </h1>
@@ -54,7 +63,7 @@ export default function ContactPage() {
 
           <form
             onSubmit={handleSubmit}
-            className="space-y-6 bg-gray-50 dark:bg-gray-900 p-6 rounded-lg shadow-md"
+            className="space-y-6 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 transition-all"
           >
             <div>
               <label
@@ -69,7 +78,7 @@ export default function ContactPage() {
                 id="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
+                className="mt-1 block w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-white dark:border-gray-700 focus:ring-[#b3da67] focus:border-[#b3da67] outline-none transition"
                 placeholder="Jane Doe"
                 required
               />
@@ -88,7 +97,7 @@ export default function ContactPage() {
                 id="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
+                className="mt-1 block w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-white dark:border-gray-700 focus:ring-[#b3da67] focus:border-[#b3da67] outline-none transition"
                 placeholder="you@example.com"
                 required
               />
@@ -107,7 +116,7 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
-                className="mt-1 block w-full p-2 border rounded-md bg-white dark:bg-gray-800 dark:text-white dark:border-gray-700"
+                className="mt-1 block w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-white dark:border-gray-700 focus:ring-[#b3da67] focus:border-[#b3da67] outline-none transition"
                 placeholder="Type your message here..."
                 required
               />
@@ -138,7 +147,7 @@ export default function ContactPage() {
               Global support. English language only for now.
             </p>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

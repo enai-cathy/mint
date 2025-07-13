@@ -5,6 +5,21 @@ import { PostMeta } from "@/app/lib/mdx";
 import { motion } from "framer-motion";
 import { posthog } from "posthog-js";
 
+const highlightMatch = (text: string, query: string) => {
+  if (!query) return text;
+
+  const regex = new RegExp(`(${query})`, "gi");
+  return text.split(regex).map((part, i) =>
+    regex.test(part) ? (
+      <mark key={i} className="bg-yellow-100 font-semibold text-black">
+        {part}
+      </mark>
+    ) : (
+      part
+    )
+  );
+};
+
 
 export default function BlogList({
   posts,
@@ -38,6 +53,7 @@ export default function BlogList({
         }}
         className="w-full mb-6 p-3 border border-gray-300 rounded-xl shadow-sm focus:ring-2 focus:ring-[#b3da67] focus:outline-none placeholder:text-gray-400"
       />
+      <div aria-live="polite">
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -70,11 +86,19 @@ export default function BlogList({
                 posthog.capture("viewed_blog_card", { title: meta.title })
               }
             >
-              <BlogCard meta={meta} slug={slug} />
+              <BlogCard
+                slug={slug}
+                meta={{
+                  ...meta,
+                  title: highlightMatch(meta.title, query) as any,
+                  summary: highlightMatch(meta.summary, query) as any,
+                }}
+              />
             </motion.div>
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

@@ -1,17 +1,16 @@
 'use client'
-import { useState } from "react";
 import Head from "next/head";
 import { posthog } from "posthog-js";
 import { toast } from "react-hot-toast";
-import Link from "next/link";
 import ProductCard from '@/app/components/ProductCard';
 import { motion } from "framer-motion";
+import CTABlock from "../components/CTABlock";
 
 
 
 export default function FreeMonthlyBudget() {
   return (
-    <main className="max-w-3xl mx-auto p-6 ">
+    <main className="max-w-3xl mx-auto p-6 mt-20">
       <Head>
         <title>Download Your Free Budget Template | Mint Mogul</title>
         <meta
@@ -31,7 +30,7 @@ export default function FreeMonthlyBudget() {
         excel sheets!!
       </p>
 
-      <div className="bg-gray-100 p-4 rounded-lg shadow-sm mb-8">
+      <div className="text-center bg-gray-100 p-4 rounded-lg shadow-sm mb-8">
         <h2 className="text-xl font-semibold text-[#536c32]">
           Monthly Budget Planner
         </h2>
@@ -45,6 +44,24 @@ export default function FreeMonthlyBudget() {
           <li>Credit Card Tracker</li>
           <li>Monthly Summary</li>
         </ul>
+
+        {/* Magic Bean Bounce Arrow */}
+        <div className="flex flex-col items-center mb-2">
+          <span className="text-2xl animate-bounce">🌱</span>
+          <svg
+            className="w-6 h-6 text-green-600 animate-bounce mt-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
         <a
           href="/downloads/monthly-budget-template.pdf"
           download
@@ -54,17 +71,18 @@ export default function FreeMonthlyBudget() {
             });
             toast.success("Download starting...");
           }}
-          className="inline-block mt-4 px-4 py-2 bg-[#b3da67] text-white rounded hover:bg-green-700 transition"
+          className="inline-block mt-2 px-4 py-2 bg-[#b3da67] text-white rounded hover:bg-green-700 transition"
         >
           Download the Template
         </a>
+
         <p className="text-[10px] text-gray-300">
           This template was inspired by *Personal Budget 2022- Reddit*
         </p>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">Other Products You Might Like</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <h2 className="text-2xl font-bold">Other Products You Might Like</h2>
+      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -105,12 +123,13 @@ export default function FreeMonthlyBudget() {
           />
         </motion.div>
       </div>
-      <p className="mt-8 text-center">
-        Want more tools like this?{" "}
-        <Link href="/pages/products" className="text-green-700 underline">
-          Explore the shop
-        </Link>
-      </p>
+
+      <CTABlock
+        heading="Want More Smart Money Tools?"
+        subheading="Check out our full shop of planners, templates, and expert money tools — or explore the blog for free tips."
+        primaryCta={{ href: "/pages/products", label: "Explore Products" }}
+        secondaryCta={{ href: "/blog", label: "Visit Blog" }}
+      />
     </main>
   );
 }

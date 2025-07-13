@@ -99,7 +99,7 @@ export default function TestimonialsSection() {
   return (
     <section className=" py-14 px-6">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0e563d] mb-8">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#536c32] mb-8">
           What People Like You Are Saying
         </h2>
         <p className="text-[#5e8071] text-lg mb-10">

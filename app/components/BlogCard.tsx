@@ -10,11 +10,11 @@ type BlogCardProps = {
 };
 
 export default function BlogCard({ meta, slug }: BlogCardProps) {
-  const estimateReadTime = (text: string) => {
-    const wordsPerMinute = 200;
-    const words = text?.split(" ").length || 0;
-    return Math.ceil(words / wordsPerMinute);
-  };
+  // const estimateReadTime = (text: string) => {
+  //   const wordsPerMinute = 200;
+  //   const words = text?.split(" ").length || 0;
+  //   return Math.ceil(words / wordsPerMinute);
+  // };
 
   return (
     <Link href={`/blog/${slug}`} className="block">
@@ -31,7 +31,7 @@ export default function BlogCard({ meta, slug }: BlogCardProps) {
               {meta.date} • by {meta.author}
             </span>
             <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-[10px]">
-              {estimateReadTime(meta.summary)} min read
+               {meta.readingTime} 
             </span>
           </div>
 

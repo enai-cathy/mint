@@ -1,6 +1,8 @@
+
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
+import MDXWrapper from "@/app/components/MDXWrapper";
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();
@@ -36,12 +38,31 @@ export default async function BlogPostPage({
   if (!post) notFound();
 //Blog/slug/page
   return (
-    <article className="prose lg:prose-lg max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-[#0e563d] mb-2">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-6">
-        {new Date(post.date).toDateString()}
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+    <article className="max-w-4xl mx-auto px-6 py-12 text-gray-800 font-sans">
+      <header className="mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#0e563d] leading-tight mb-3">
+          {post.title}
+        </h1>
+        <img
+          src={post.coverImage}
+          alt={`${post} preview`}
+          className="w-full h-64 object-cover mb-5 rounded-xl"
+          loading="lazy"
+        />
+        <p className="text-sm text-gray-500">
+          Published on{" "}
+          {new Date(post.date).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}{" "}
+          • {post.readingTime}
+        </p>
+      </header>
+
+      <div className="prose prose-base md:prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
+        <MDXWrapper source={post.content} />
+      </div>
     </article>
   );
 }

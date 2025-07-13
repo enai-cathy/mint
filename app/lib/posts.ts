@@ -2,50 +2,62 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import readingTime from "reading-time";
 
 const postsDir = path.join(process.cwd(), "content", "blog");
 
-// Define a Post type for consistency
 export type Post = {
-  [x: string]: string;
   slug: string;
   title: string;
   date: string;
   excerpt: string;
-  contentHtml: string; // We'll convert MDX/Markdown to HTML later if needed
+  coverImage?: string;
+  author?: string;
+  content: MDXRemoteSerializeResult;
+  readingTime: string;
 };
 
-// Get all post metadata (for listing pages, etc.)
+// Get all post slugs (for dynamic routing)
 export function getAllSlugs(): string[] {
   return fs
     .readdirSync(postsDir)
+    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
     .map((filename) => filename.replace(/\.mdx?$/, ""));
 }
 
-// Get full post data by slug
-export function getPostBySlug(slug: string): Post | null {
-  const fullPathMdx = path.join(postsDir, `${slug}.mdx`);
-  const fullPathMd = path.join(postsDir, `${slug}.md`);
+// Get a single post by slug and serialize MDX
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const mdxPath = path.join(postsDir, `${slug}.mdx`);
+  const mdPath = path.join(postsDir, `${slug}.md`);
+ 
 
   let filePath = "";
-  if (fs.existsSync(fullPathMdx)) {
-    filePath = fullPathMdx;
-  } else if (fs.existsSync(fullPathMd)) {
-    filePath = fullPathMd;
-  } else {
-    return null; // Handle missing file gracefully
-  }
+  if (fs.existsSync(mdxPath)) filePath = mdxPath;
+  else if (fs.existsSync(mdPath)) filePath = mdPath;
+  else return null;
 
-  const fileContents = fs.readFileSync(filePath, "utf8");
-  const { content, data } = matter(fileContents);
+  const rawFile = fs.readFileSync(filePath, "utf8");
+  const { content, data } = matter(rawFile);
+   const readingStats = readingTime(content);
 
-  // For now, we pass raw Markdown as contentHtml
-  // In the future, you can process MDX here if needed
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [],
+    },
+    scope: data,
+  });
+
   return {
     slug,
     title: data.title || "Untitled",
     date: data.date || "",
-    excerpt: data.excerpt || "",
-    contentHtml: content, // Or process to HTML/MDX if desired
+    excerpt: data.summary || "",
+    author: data.author || "Mint Mogul",
+    coverImage: data.coverImage || null,
+    content: mdxSource,
+    readingTime: readingStats.text,
   };
 }
