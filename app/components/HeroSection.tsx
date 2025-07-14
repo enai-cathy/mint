@@ -53,6 +53,7 @@ import React from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Lottie from "lottie-react";
+import animationData from "@/public/animation/Retail-Trading-App.json"
 
 export default function HeroSection() {
 const { scrollY } = useScroll();
@@ -100,7 +101,7 @@ const { scrollY } = useScroll();
         {/* Lottie animation */}
         <div className="w-full max-w-[480px] md:max-w-[600px]">
           <Lottie
-            animationData={require("@/public/animation/Retail-Trading-App.json")} // or use a remote JSON
+            animationData={animationData} // or use a remote JSON
             loop
             autoplay
             className="w-full h-auto"

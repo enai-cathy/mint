@@ -41,7 +41,7 @@ export default function ProductCard({
 
       {/* 📸 Image */}
       {image && (
-        <img
+        <Image
           src={image}
           alt={`${title} preview`}
           className="w-full h-44 object-contain mb-5 rounded-xl"

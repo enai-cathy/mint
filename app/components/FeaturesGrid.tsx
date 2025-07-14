@@ -41,7 +41,7 @@ export default function FeaturesGrid() {
 
       {/* Section badge */}
       <p className="text-sm uppercase tracking-widest font-medium text-[#84cc16] mb-2">
-        What's Inside
+        What&apos;s Inside
       </p>
 
       {/* Title */}

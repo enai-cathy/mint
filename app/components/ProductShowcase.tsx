@@ -71,7 +71,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import Lottie from "lottie-react";
 
 const categories = ["All", "Save", "Spend", "Track"];
 

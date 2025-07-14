@@ -26,7 +26,7 @@ export default function AboutSection() {
           Meet Mint Mogul
         </h1>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-          We're not just another money blog. Mint Mogul is your all-in-one
+          We&apos;re not just another money blog. Mint Mogul is your all-in-one
           playground for financial domination — built for big dreamers and smart
           savers who want more from their money <strong>now</strong>.
         </p>

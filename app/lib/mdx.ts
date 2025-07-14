@@ -4,13 +4,14 @@ import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import readingTime from "reading-time";
+import { ReactNode } from "react";
 
 
 const postsDirectory = path.join(process.cwd(), "content/blog");
 
 export type PostMeta = {
-  title: string;
-  summary: string;
+  title: string | ReactNode;
+  summary: string | ReactNode;
   date: string;
   author: string;
   coverImage: string;

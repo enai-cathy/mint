@@ -1,5 +1,6 @@
 "use client";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 type Product = {
   title: string;
@@ -16,7 +17,7 @@ export default function PremiumCard({ product }: { product: Product }) {
       className="bg-white rounded-xl shadow hover:scale-[1.02] hover:shadow-lg transition-transform duration-300
  p-4 border border-gray-100"
     >
-      <img
+      <Image
         src={product.coverImage}
         alt={product.title}
         className="w-full h-56 object-cover rounded-md mb-4"

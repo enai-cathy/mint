@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
+import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
 export async function generateStaticParams() {
@@ -43,8 +44,8 @@ export default async function BlogPostPage({
         <h1 className="text-4xl md:text-5xl font-bold text-[#0e563d] leading-tight mb-3">
           {post.title}
         </h1>
-        <img
-          src={post.coverImage}
+        <Image
+          src={post.coverImage || "/image/mint-mogul.jpg"}
           alt={`${post.title} preview`}
           className="w-full h-64 object-cover mb-5 rounded-xl"
           loading="lazy"

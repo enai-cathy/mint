@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Lottie from "lottie-react";
 import {motion} from "framer-motion"
+import animationData from "@/public/animation/Financial-Reports.json";
 
 export default function ToolsTeaser(){
   return (
@@ -17,7 +18,7 @@ export default function ToolsTeaser(){
         {/* Lottie animation */}
         <div className="w-full max-w-[480px] md:max-w-[600px]">
           <Lottie
-            animationData={require("@/public/animation/Financial-Reports.json")} // or use a remote JSON
+            animationData={animationData}
             loop
             autoplay
             className="w-full h-auto"
