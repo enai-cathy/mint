@@ -1,11 +1,12 @@
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
+
 // ✅ generateStaticParams
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
+export async function generateStaticParams() {
   const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
 }
@@ -14,9 +15,10 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug);
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
 
   return {
@@ -31,8 +33,12 @@ export async function generateMetadata({
 }
 
 // ✅ Page with inline types
-export default async function BlogPostPage( {params, }: { params: Promise<{ slug: string }> }) {
-   const { slug } = await params;
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
 
