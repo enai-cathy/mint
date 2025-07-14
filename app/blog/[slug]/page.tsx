@@ -1,8 +1,7 @@
-
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
-import MDXWrapper from "@/app/components/MDXWrapper";
+import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();
@@ -12,9 +11,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
   return {
@@ -28,15 +27,16 @@ export async function generateMetadata({
   };
 }
 
+
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
-//Blog/slug/page
+
   return (
     <article className="max-w-4xl mx-auto px-6 py-12 text-gray-800 font-sans">
       <header className="mb-10">
@@ -45,7 +45,7 @@ export default async function BlogPostPage({
         </h1>
         <img
           src={post.coverImage}
-          alt={`${post} preview`}
+          alt={`${post.title} preview`}
           className="w-full h-64 object-cover mb-5 rounded-xl"
           loading="lazy"
         />
@@ -61,7 +61,7 @@ export default async function BlogPostPage({
       </header>
 
       <div className="prose prose-base md:prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
-        <MDXWrapper source={post.content} />
+        <MDXClientRenderer source={post.content} />
       </div>
     </article>
   );
