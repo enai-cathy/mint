@@ -4,16 +4,18 @@ import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
+
+type Props = {
+  params: { slug: string };
+};
+
+
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
