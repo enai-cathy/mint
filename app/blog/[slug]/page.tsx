@@ -4,24 +4,19 @@ import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
-
-type Props = {
-  params: { slug: string };
-};
-
-
-export async function generateStaticParams() {
+// ✅ generateStaticParams
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
+// ✅ generateMetadata with inline types
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Post Not Found" };
 
   return {
@@ -35,10 +30,13 @@ export async function generateMetadata({
   };
 }
 
-
-export default async function BlogPostPage({ params }: Props) {
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+// ✅ Page with inline types
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
   return (
@@ -52,6 +50,8 @@ export default async function BlogPostPage({ params }: Props) {
           alt={`${post.title} preview`}
           className="w-full h-64 object-cover mb-5 rounded-xl"
           loading="lazy"
+          width={800}
+          height={300}
         />
         <p className="text-sm text-gray-500">
           Published on{" "}
