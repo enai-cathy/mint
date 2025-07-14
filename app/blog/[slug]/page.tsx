@@ -15,10 +15,15 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { slug } = params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
+
   return {
     title: `${post.title} | Mint Mogul Blog`,
     description: post.excerpt || "",
