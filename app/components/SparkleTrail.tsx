@@ -2,9 +2,18 @@
 
 import { useEffect, useRef } from "react";
 
+type Sparkle = {
+  x: number;
+  y: number;
+  radius: number;
+  opacity: number;
+  vx: number;
+  vy: number;
+};
+
 export default function SparkleTrail() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const sparkles: any[] = [];
+
   const MAX_SPARKLES = 100; // Limit total sparkles
 
   useEffect(() => {
@@ -15,6 +24,8 @@ export default function SparkleTrail() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+  const sparkles: Sparkle[] = [];
+  
     const resize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;

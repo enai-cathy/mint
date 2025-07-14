@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import NavLinks from "@/app/ui/dashboard/nav-links";
+import NavLinks from "@/app/ui/nav-links";
 import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import Lottie from "lottie-react";
+import animationData from "@/public/animation/3D-Money-Icon.json";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Navbar() {
               <span className="flex items-center gap-2 transition-transform duration-300 hover:animate-bounce">
                 Mint Mogul
                 <Lottie
-                  animationData={require("@/public/animation/3D-Money-Icon.json")} // or use a remote JSON
+                  animationData={animationData} // or use a remote JSON
                   loop
                   autoplay
                   className="w-full h-auto"

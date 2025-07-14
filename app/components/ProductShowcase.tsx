@@ -120,7 +120,7 @@ export default function ProductShowcase() {
           Curated for Any Stage of Wealth Building
         </h1>
         <p className="text-xl text-[#0e563d] mt-4">
-          Whether you're starting out or scaling up, Mint Mogul equips you with
+          Whether you&apos;re starting out or scaling up, Mint Mogul equips you with
           what you need to build real wealth and{" "}
           <span className="font-bold">meet your goals.</span>
         </p>

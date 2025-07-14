@@ -132,7 +132,7 @@ export default function ToolsPage() {
           Tools & Templates for Money Moguls
         </motion.h1>
         <p className="text-lg mb-10 text-gray-700 text-center">
-          Whether you're budgeting like a boss or scaling a side hustle, these
+          Whether you&apos;re budgeting like a boss or scaling a side hustle, these
           are the tools that get you closer to wealth. Everything listed here is
           either made by us or hand‑picked for its value and credibility.
         </p>

@@ -83,7 +83,9 @@ export default function PrivacyPolicy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold mb-2">8. Children's Privacy</h2>
+          <h2 className="text-xl font-semibold mb-2">
+            8. Children&apos;s Privacy
+          </h2>
           <p>
             Mint Mogul is not intended for children under 13. We do not
             knowingly collect data from children.
@@ -95,8 +97,8 @@ export default function PrivacyPolicy() {
             9. Changes to This Policy
           </h2>
           <p>
-            We may update this policy. Please review the "Effective Date"
-            regularly.
+            We may update this policy. Please review the &quot;Effective
+            Date&quot; regularly.
           </p>
         </section>
 

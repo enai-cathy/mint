@@ -57,7 +57,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
             Whether you have a question about our financial tools, want to
-            partner with us, or simply want to say hello, we're here to help.
+            partner with us, or simply want to say hello, we&apos;re here to help.
             Mint Mogul serves a global community.
           </p>
 

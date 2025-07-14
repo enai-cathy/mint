@@ -1,6 +1,3 @@
-import CurrencyWidget from "@/app/components/CurrencyWidget";
-import NewsletterSignup from "@/app/components/Newsletter";
-import SavingsCalculator from "@/app/components/SavingsCalculator";
 import HeroSection from "./components/HeroSection";
 import ToolsTeaser from "./components/ToolsTeaser";
 import ProductShowcase from "./components/ProductShowcase";

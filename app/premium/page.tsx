@@ -8,10 +8,9 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
-import posthog from "posthog-js";
 import CTASection from "../components/CTASection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import Link from "next/link";
+
 
 const premiumProducts = [
   {
@@ -35,21 +34,21 @@ const premiumProducts = [
     link: "https://gumroad.com/l/savings-playbook",
   },
 ];
-const features = [
-  {
-    icon: <LockClosedIcon className="w-6 h-6 text-[#3b82f6]" />,
-    title: " 100% secure checkout with Gumroad",
+// const features = [
+//   {
+//     icon: <LockClosedIcon className="w-6 h-6 text-[#3b82f6]" />,
+//     title: " 100% secure checkout with Gumroad",
    
-  },
-  {
-    icon: <StarIcon className="w-6 h-6 text-[#facc15]" />,
-    title: "Premium Products That Pay for Themselves",
-   },
-  {
-    icon: <CheckCircleIcon className="w-6 h-6 text-[#22c55e]" />,
-    title: "Curated Picks You Can Actually Trust",
-     },
-];
+//   },
+//   {
+//     icon: <StarIcon className="w-6 h-6 text-[#facc15]" />,
+//     title: "Premium Products That Pay for Themselves",
+//    },
+//   {
+//     icon: <CheckCircleIcon className="w-6 h-6 text-[#22c55e]" />,
+//     title: "Curated Picks You Can Actually Trust",
+//      },
+// ];
 
 export default function PremiumPage() {
   return (
