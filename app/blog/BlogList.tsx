@@ -98,8 +98,11 @@ const filteredPosts = posts.filter((post) => {
                 <BlogCard
                   slug={slug}
                   meta={meta}
-                  highlightedTitle={highlightMatch(meta.title, query)}
-                  highlightedSummary={highlightMatch(meta.summary, query)}
+                  highlightedTitle={highlightMatch(String(meta.title), query)}
+                  highlightedSummary={highlightMatch(
+                    String(meta.summary),
+                    query
+                  )}
                 />
               </motion.div>
             ))}

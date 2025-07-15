@@ -5,6 +5,13 @@ import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
 
+interface BlogPostPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+
 // ✅ generateStaticParams
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();

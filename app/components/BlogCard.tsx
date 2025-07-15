@@ -8,8 +8,8 @@ import Image from "next/image";
 type BlogCardProps = {
   meta: PostMeta;
   slug: string;
-  highlightedTitle?: React.ReactNode;
-  highlightedSummary?: React.ReactNode;
+  highlightedTitle: React.ReactNode;
+  highlightedSummary: React.ReactNode;
 };
 
 
