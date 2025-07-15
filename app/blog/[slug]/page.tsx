@@ -1,15 +1,15 @@
-import { Metadata, ResolvingMetadata } from "next";
+
 import { notFound } from "next/navigation";
 import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
 import Image from "next/image";
 import MDXClientRenderer from "@/app/components/MDXClientRenderer";
 
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
+// interface BlogPostPageProps {
+//   params: {
+//     slug: string;
+//   };
+// }
 
 
 // ✅ generateStaticParams
