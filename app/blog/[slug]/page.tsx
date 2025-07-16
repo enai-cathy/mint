@@ -1,24 +1,26 @@
 
 import { notFound } from "next/navigation";
-import { getPostBySlug, getAllSlugs } from "@/app/lib/posts";
+import { getPostBySlug } from "@/app/lib/posts";
 import Image from "next/image";
-import MDXClientRenderer from "@/app/components/MDXClientRenderer";
+import fs from "fs";
+import path from "path";
 
 
-// interface BlogPostPageProps {
-//   params: {
-//     slug: string;
-//   };
-// }
 
-
-// ✅ generateStaticParams
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
+  const postsDir = path.join(process.cwd(), "content", "blog");
+  const files = fs.readdirSync(postsDir);
 
-// ✅ generateMetadata with inline types
+  const slugs = files
+    .filter((file) => file.endsWith(".mdx"))
+    .map((file) => ({
+      slug: file.replace(/\.mdx$/, ""),
+    }));
+
+  return slugs;
+}
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
@@ -39,44 +41,56 @@ export async function generateMetadata({
   };
 }
 
-// ✅ Page with inline types
+
 export default async function BlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
-  if (!post) notFound();
+  try {
+   const { slug } = await params;
+   const post = await getPostBySlug(slug);
+   if (!post) return { title: "Post Not Found" };
 
-  return (
-    <article className="max-w-4xl mx-auto px-6 py-12 text-gray-800 font-sans">
-      <header className="mb-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#0e563d] leading-tight mb-3">
-          {post.title}
-        </h1>
-        <Image
-          src={post.coverImage || "/image/mint-mogul.jpg"}
-          alt={`${post.title} preview`}
-          className="w-full h-64 object-cover mb-5 rounded-xl"
-          loading="lazy"
-          width={800}
-          height={300}
-        />
-        <p className="text-sm text-gray-500">
-          Published on{" "}
-          {new Date(post.date).toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}{" "}
-          • {post.readingTime}
-        </p>
-      </header>
+    // Dynamically import the MDX post using slug
+    const postModule = await import(`@/content/${slug}.mdx`);
+    const { metadata } = postModule;
+    const Post = postModule.default;
 
-      <div className="prose prose-base md:prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
-        <MDXClientRenderer source={post.content} />
-      </div>
-    </article>
-  );
+    return (
+      <article className="max-w-4xl mx-auto px-6 py-12 text-gray-800 font-sans">
+        <header className="mb-10">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0e563d] leading-tight mb-3">
+            {metadata?.title || "Untitled"}
+          </h1>
+          <Image
+            src={metadata?.coverImage || "/image/mint-mogul.jpg"}
+            alt={`${metadata?.title || "Post"} preview`}
+            className="w-full h-64 object-cover mb-5 rounded-xl"
+            loading="lazy"
+            width={800}
+            height={300}
+          />
+          <p className="text-sm text-gray-500">
+            Published on{" "}
+            {new Date(metadata?.date || Date.now()).toLocaleDateString(
+              undefined,
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            )}
+            {metadata?.readingTime && ` • ${metadata.readingTime}`}
+          </p>
+        </header>
+
+        <div className="prose prose-base md:prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
+          <Post />
+        </div>
+      </article>
+    );
+  } catch {
+    notFound();
+  }
 }

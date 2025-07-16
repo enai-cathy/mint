@@ -4,18 +4,20 @@
     "build": "next build",
     "dev": "next dev --turbopack",
     "start": "next start",
-     "lint": "eslint . --ext .ts,.tsx --fix"
+    "lint": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.1.0",
-    "@next/mdx": "^15.3.2",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.4.1",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@tailwindcss/forms": "^0.5.10",
     "@tsparticles/all": "^3.8.1",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/shape-image": "^3.8.1",
+    "@types/mdx": "^2.0.13",
     "autoprefixer": "10.4.20",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
