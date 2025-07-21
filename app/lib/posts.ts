@@ -2,22 +2,10 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import readingTime from "reading-time";
+import { compileMDX } from "next-mdx-remote/rsc"; // RSC-friendly MDX
 
 const postsDir = path.join(process.cwd(), "content", "blog");
-
-export type Post = {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  coverImage?: string;
-  author?: string;
-  content: MDXRemoteSerializeResult;
-  readingTime: string;
-};
 
 // Get all post slugs (for dynamic routing)
 export function getAllSlugs(): string[] {
@@ -28,10 +16,9 @@ export function getAllSlugs(): string[] {
 }
 
 // Get a single post by slug and serialize MDX
-export async function getPostBySlug(slug: string): Promise<Post | null> {
+export async function getPostBySlug(slug: string) {
   const mdxPath = path.join(postsDir, `${slug}.mdx`);
   const mdPath = path.join(postsDir, `${slug}.md`);
- 
 
   let filePath = "";
   if (fs.existsSync(mdxPath)) filePath = mdxPath;
@@ -40,14 +27,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 
   const rawFile = fs.readFileSync(filePath, "utf8");
   const { content, data } = matter(rawFile);
-   const readingStats = readingTime(content);
+  const stats = readingTime(content);
 
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
+  const { content: mdxContent } = await compileMDX({
+    source: content,
+    options: { parseFrontmatter: true },
   });
 
   return {
@@ -55,9 +39,10 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     title: data.title || "Untitled",
     date: data.date || "",
     excerpt: data.summary || "",
-    author: data.author || "Mint Mogul",
-    coverImage: data.coverImage || null,
-    content: mdxSource,
-    readingTime: readingStats.text,
+    author: data.author ?? "Mint Mogul",
+    coverImage: data.coverImage?.trim() || null,
+    readingTime: stats.text,
+    mdxContent, // ✅ compiled RSC-ready content
   };
 }
+

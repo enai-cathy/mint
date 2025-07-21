@@ -3,18 +3,17 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   /* config options here */
+
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: [],
     rehypePlugins: [],
+    remarkPlugins: [],
   },
 });
 
-module.exports = withMDX({
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-});
+const finalConfig = withMDX(nextConfig);
 
-export default nextConfig;
+export default finalConfig;

@@ -93,14 +93,7 @@ export default function Footer() {
                 Terms of Service
               </Link>
             </li>
-            <li>
-              <Link
-                href="/AffliateDisclosure"
-                className="text-blue-600 underline hover:text-[#536c32]"
-              >
-                Affiliate Disclosure
-              </Link>
-            </li>
+         
           </ul>
         </div>
 

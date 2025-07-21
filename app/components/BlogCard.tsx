@@ -19,11 +19,12 @@ export default function BlogCard({
   highlightedTitle,
   highlightedSummary,
 }: BlogCardProps) {
+  
   return (
     <Link href={`/blog/${slug}`} className="block">
       <div className="group bg-[#f9fafb] shadow-md rounded-xl overflow-hidden border border-transparent hover:border-green-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
         <Image
-          src={meta.coverImage}
+          src={meta.coverImage || "/images/mint-mogul.jpg"}
           alt={typeof meta.title === "string" ? meta.title : "Post Cover Image"}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
           width={400}
