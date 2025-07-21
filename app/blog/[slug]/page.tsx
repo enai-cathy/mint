@@ -159,7 +159,7 @@ const imageSrc =
         </header>
 
         <br />
-        <div className="prose prose-base md:prose-lg dark:prose-invert max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
+        <div className="prose prose-base md:prose-lg max-w-none prose-img:rounded-xl prose-a:text-[#0e563d] hover:prose-a:text-[#b3da67]">
          {post.mdxContent}
 
         </div>
