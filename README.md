@@ -84,7 +84,7 @@ If a script name differs in your package.json, use that script. The repo include
 ```
 
 ## Project structure (summary view)
-
+```
 /app
   └─ (Next.js App Router routes & layouts — dashboard, pages, APIs)
 content/
@@ -97,6 +97,7 @@ postcss.config.js
 .env.example
 tsconfig.json
 package.json
+```
 
 ## Features & extension ideas
 
