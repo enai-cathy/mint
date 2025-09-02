@@ -54,3 +54,83 @@ Files & folders present at project root :
 ```bash
 git clone https://github.com/enai-cathy/mint.git
 cd mint
+
+2.Install dependencies:
+
+# npm
+npm install
+# or pnpm
+pnpm install
+
+3.Copy environment example:
+
+cp .env.example .env.local
+# then edit .env.local as needed
+
+4.Run development server:
+
+# npm
+npm run dev
+# or pnpm
+pnpm dev
+
+5.Build for production:
+
+npm run build
+npm run start
+
+
+If a script name differs in your package.json, use that script. The repo includes the standard Next.js configuration files.
+```
+
+## Project structure (summary view)
+
+/app
+  └─ (Next.js App Router routes & layouts — dashboard, pages, APIs)
+content/
+  └─ blog/         (MDX blog posts)
+public/            (images, favicons, static files)
+mdx-components.tsx (MDX component mapping for headings, code, etc.)
+next.config.ts
+tailwind.config.ts
+postcss.config.js
+.env.example
+tsconfig.json
+package.json
+
+## Features & extension ideas
+
+Mint makes it easy to add useful product features:
+
+- Auth & role-based dashboards (hook a provider like Clerk, NextAuth, or JWT).
+
+- Data visualisations (integrate Recharts, Chart.js, or Recharts + server-sent data).
+
+- Headless CMS or CMS-like workflows (connect Contentful, Sanity, Supabase, or use Git-based MDX editing).
+
+- Analytics & A/B testing (Vercel analytics, Plausible, GA4).
+
+- E2E / integration tests (Cypress / Playwright) and CI (GitHub Actions).
+
+
+
+### This repo demonstrates modern web engineering fundamentals: typed code (TypeScript), componentised UI, content-first thinking (MDX), and production-measured configuration. It’s ideal as both a showcase app to present to clients and a robust starting point for building feature-rich dashboards and marketing sites.
+
+
+
+### Mint lets teams ship content and product features faster. Want a landing page + blog, plus an analytics/admin dashboard for editors and managers? Mint contains the structure and examples to deliver both with a single, maintainable stack — faster time-to-value and lower engineering cost.
+
+## Contributing & next steps
+
+- Add examples for authentication and API routes if you want an auth-enabled demo.
+
+- Expand content/blog/ with use-case posts (case studies, metrics, product copy) to show stakeholders real content.
+
+
+## Contact
+
+GitHub: enai-cathy/mint
+
+
+---
+
